@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Plantswap-Identifier
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
-## Getting Started
+## Beschrijving :computer:
+Bij Buurtcampus Oost staat sinds kort een stekjesbieb. Buurtbewoners kunnen stekjes halen uit de stekjesbieb, maar ook stekjes brengen naar de stekjesbieb. De stekjesbieb dient als middel om buurtbewoners met elkaar te verbinden. Daarnaast leren bewoners hoe ze op een duurzame manier met planten kunnen omgaan en draagt het bij aan een gezondere leefomgeving in huis.
 
-First, run the development server:
+## Features :rocket:
+| Must have | Could have |
+|-----|------------|
+|Able to identify plant species| Route description|
+|Being able to add plants| Being able to see when a workshop start|
+||Archive of plants|
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
+## Quickstart :car:
+In order to use this project locally run this command below
 ```
+git clone https://github.com/Zephelion/plantswap-identifier.git
+```
+then you wan to run `npm install` to install all the necessary dependencies.
+To run the application use the command below
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+npm run dev
+```
+head to `localhost:300` and voila :moyai:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Documentation
+If you want to go more further in depth you can head to the [Wiki](https://github.com/Zephelion/plantswap-identifier/wiki) if you have any questions you can just contact us :).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+This project is licensed under the terms of the MIT license.
