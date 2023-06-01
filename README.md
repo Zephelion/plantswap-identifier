@@ -23,7 +23,7 @@ To run the application use the command below
 ```
 npm run dev
 ```
-head to `localhost:300` and voila :moyai:
+head to `localhost:3000` and voila :moyai:
 
 ## Documentation
 If you want to go more further in depth you can head to the [Wiki](https://github.com/Zephelion/plantswap-identifier/wiki) if you have any questions you can just contact us :).
