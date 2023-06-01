@@ -28,5 +28,5 @@ head to `localhost:300` and voila :moyai:
 ## Documentation
 If you want to go more further in depth you can head to the [Wiki](https://github.com/Zephelion/plantswap-identifier/wiki) if you have any questions you can just contact us :).
 
-## License
-This project is licensed under the terms of the MIT license.
+## License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/noyamirai/real-time-web-2223/blob/main/LICENSE)
+This project is licensed under the terms of the MIT license .
