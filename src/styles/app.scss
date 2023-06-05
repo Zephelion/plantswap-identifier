@@ -1,0 +1,29 @@
+// @import 'heading';
+// @import 'variables';
+// @import 'searchbar';
+// @import 'plantspage';
+// @import 'plant';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body{
+    background-color: var(--primary-bg-color);
+}
+
+main{
+    padding: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+li{
+    list-style: none;
+}

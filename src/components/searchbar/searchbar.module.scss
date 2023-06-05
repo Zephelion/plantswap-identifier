@@ -1,0 +1,17 @@
+input.search{
+    width: 100%;
+    background-color: var(--secondary-bg-color);
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 25px;
+    margin-top: 21px;
+    margin-bottom: 20px;
+
+    &::placeholder{
+        color: var(--bos);
+        font-weight: bold;
+        font-size: 1em;
+        opacity: 0.5;
+    }
+}
