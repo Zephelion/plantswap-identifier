@@ -1,0 +1,11 @@
+.identifier{
+    background-color: lightpink;
+    height: 100vh;
+    color: black;
+}
+
+.identifier img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
