@@ -6,28 +6,34 @@ export default function Home() {
 
     const plants = [
         {
-            name: 'Monstera',
-            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+            id: 1,
+            name: "Aloe Vera",
+            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
         },
         {
-            name: 'Sansevieria',
-            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+            id: 2,
+            name: "Snake Plant",
+            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
         },
         {
-            name: 'Ficus Lyrata',
-            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+            id: 4,
+            name: "Fiddle Leaf Fig",
+            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
         },
         {
-            name: 'Monstera',
-            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+            id: 5,
+            name: "Fiddle Leaf Fig",
+            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
         },
         {
-            name: 'Sansevieria',
-            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+            id: 6,
+            name: "Fiddle Leaf Fig",
+            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
         },
         {
-            name: 'Ficus Lyrata',
-            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+            id: 7,
+            name: "Fiddle Leaf Fig",
+            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
         },
     ]
 
