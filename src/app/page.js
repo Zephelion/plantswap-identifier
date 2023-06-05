@@ -1,95 +1,53 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-
+import styles from './page.module.scss'
+import PlantCard from '@/components/plant-card';
+import List from '@/components/common/ordered-list/container';
+import ListItem from '@/components/common/ordered-list/item';
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    const plants = [
+        {
+            name: 'Monstera',
+            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+        },
+        {
+            name: 'Sansevieria',
+            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+        },
+        {
+            name: 'Ficus Lyrata',
+            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+        },
+        {
+            name: 'Monstera',
+            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+        },
+        {
+            name: 'Sansevieria',
+            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+        },
+        {
+            name: 'Ficus Lyrata',
+            image: 'https://www.ikea.com/nl/nl/images/products/fejka-kunstplant-binnen-buiten-monstera__0614197_pe686822_s5.jpg'
+        },
+    ]
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    return (
+        <section className={styles.intro}>
+            <div>
+                <h2>Planten</h2>
+                <a href="#">Bekijk alle &gt;</a>
+            </div>
+            <ul>
+                {plants.map((plant, index) => (
+                    <PlantCard key={index} plant={plant} />
+                ))}
+            </ul>
+            <h2>Hoe werkt het?</h2>
+            <List>
+                <ListItem>Lorem ipsum</ListItem>
+                <ListItem>Lorem ipsum</ListItem>
+                <ListItem>Lorem ipsum</ListItem>
+            </List>
+        </section>
+    )
 }
