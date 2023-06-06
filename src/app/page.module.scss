@@ -21,4 +21,8 @@
         scroll-snap-type: x mandatory;
         padding: 1rem 0;
     }
+
+    ul::-webkit-scrollbar {
+        display: none;
+    }
 }
