@@ -10,14 +10,18 @@ li.card{
     width: 165px;
     height: 215px;
 
-    img{
-        height: auto;
-        width: 100%;
-    }
-
-    h2{
-        padding: .5rem;
-        font-size: 1rem;
-        font-weight: 400;
+    a{
+        display: inline-block;
+        img{
+            height: auto;
+            width: 100%;
+        }
+    
+        h2{
+            padding: .5rem;
+            font-size: 1rem;
+            font-weight: 400;
+            text-align: center;
+        }
     }
 }
