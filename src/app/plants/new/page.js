@@ -1,61 +1,56 @@
 'use client';
 
 import styles from "./page.module.css";
-import { useState } from "react";
-// import axios from "axios";
+import { useEffect, useState } from "react";
+import { ProgressBar } from "@/components/progress-bar";
+import { ScanFoto } from "@/components/form/scan-foto";
 
-export default function Test() {
+export default function NewPlant() {
+    
+    const [steps, setSteps] = useState([]);
+    const [activeStep, setActiveStep] = useState(1);
 
-    const [ image, setImage ] = useState(null);
-    const [ createObjectURL, setCreateObjectURL ] = useState(null);
-    const [ plant, setPlant ] = useState(null);
-    const [ isCapturing, setIsCapturing ] = useState(false);
-    const [ loading, setLoading ] = useState(true);
-
-    const API_URL = "/api/plants";
-
-    const fetchPlant = async () => {
-        console.log("fetching plant")
-
-        const formData = new FormData();
-        formData.append("image", image);
-        const res = await fetch(API_URL, {
-            method: "POST",
-            body: formData
-        })
-        const { data } = await res.json();
-        console.log("data", data)
-
-        setPlant(data)
-        setLoading(false)
-        setIsCapturing(false);
-    }
-
-    const handleImageChange = async (e) => {
-        console.log("handleImageChange")
-        setIsCapturing(true);
-        if (e.target.files && e.target.files[ 0 ]) {
-
-            const file = e.target.files[0];
-            setImage(file);
-            setCreateObjectURL(URL.createObjectURL(file));
-        }
-    }
+    useEffect(() => {
+        setSteps([
+            {
+                title: "Scan foto 1",
+                description: "Scan de foto van de plant",
+                activeStep: 1,
+                component: <ScanFoto />
+            },
+            {
+                title: "Scan foto 2",
+                description: "Scan de foto van de plant",
+                activeStep: 2,
+                component: <ScanFoto />
+            },
+            {
+                title: "Scan foto 3",
+                description: "Scan de foto van de plant",
+                activeStep: 3,
+                component: <ScanFoto />
+            },
+        ])
+    }, [])
 
     return (
-        <section className={styles.identifier}>
-            <h1>Capture plant</h1>
-            <input type="file" accept="image/*" capture="environment" onChange={(e) => handleImageChange(e)} />
-            {/* <img src={createObjectURL} /> */}
-
-            {image &&
-                <button onClick={fetchPlant}>
-                    Capture plant
-                </button>
-            }
-            <div>
-                {loading && isCapturing ? <p>Loading...</p> : <h2>{plant?.bestMatch}</h2>}
-            </div>
+        <section className={styles.form}>
+            <ProgressBar 
+                count={steps.length} 
+                setActiveStep={setActiveStep}
+                activeStep={activeStep}
+            />
+            
+            {steps.map((step, index) => {
+                if (step.activeStep === activeStep) {
+                    return (
+                        <div key={index}>
+                            <h2>{step.title}</h2>
+                            {step.component}
+                        </div>
+                    )
+                }
+            })}
         </section>
     )
 }
