@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 
-export default function Input({ type }) {
+export default function Input({ type, id, placeholder }) {
     return (
-        <input className={styles.Input} type={type} placeholder="test"/> 
+        <input className={styles.input} type={type} id={id} placeholder={placeholder}/> 
     );
 }
