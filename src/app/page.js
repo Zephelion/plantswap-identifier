@@ -45,7 +45,7 @@ export default function Home() {
             </div>
             <ul>
                 {plants.map((plant, index) => (
-                    <PlantCard key={index} plant={plant} />
+                    <PlantCard key={index} plant={plant} image={plant.image} />
                 ))}
             </ul>
             <h2>Hoe werkt het?</h2>
