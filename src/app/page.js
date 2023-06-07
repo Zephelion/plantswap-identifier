@@ -41,7 +41,7 @@ export default function Home() {
         <section className={styles.intro}>
             <div>
                 <h2>Planten</h2>
-                <a href="#">Bekijk alle &gt;</a>
+                <a href="/plants">Bekijk alle &gt;</a>
             </div>
             <ul>
                 {plants.map((plant, index) => (
