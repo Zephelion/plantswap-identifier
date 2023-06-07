@@ -1,8 +1,22 @@
+import Styles from './page.module.scss'
+import Information from '@/components/information'
+import BackButton from '@/components/back-button'
+import { Suspense } from 'react'
+import Loading from './loading'
+
+
 const page = () => {
   return (
     <>
-      <h1>Individuele plant</h1>
-      <p>Yeet</p>
+      <Suspense fallback={<Loading/>}>
+        <figure className={Styles.cover}>
+          <img src="/images/cover.svg" alt="Aloe Vera" />
+        </figure>
+        <section className={Styles.information}>
+          <Information />
+        </section>
+      </Suspense>
+      <BackButton />
     </>
   )
 }

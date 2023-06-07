@@ -1,6 +1,7 @@
 import '@/styles/app.scss';
 import { Inter } from 'next/font/google'
 import Footer from '@/components/footer'
+// import Styles from '@/styles/app.scss'
 
 const inter = Inter({ subsets: ['latin'] })
 
