@@ -4,7 +4,6 @@ import styles from './styles.module.scss';
 
 export default function Footer() {
   const route =  usePathname();
-  console.log(route);
   return (
     <footer className={styles.nav}>
       <nav>
