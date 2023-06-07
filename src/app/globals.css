@@ -98,9 +98,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
+  /* padding: 1rem; */
   padding-bottom: 5rem;
-  /* min-height: 100vh; */
 }
 
 a {
