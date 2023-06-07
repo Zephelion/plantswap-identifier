@@ -12,6 +12,14 @@ footer.nav{
             justify-content: space-between;
             margin: auto;
 
+            li{
+                opacity: .5;
+            }
+
+            li.active{
+                opacity: 1;
+            }
+
             a{
                 display: flex;
                 flex-direction: column;
