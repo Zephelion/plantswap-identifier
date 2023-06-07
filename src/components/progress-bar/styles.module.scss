@@ -1,0 +1,22 @@
+section.progress{
+    display: flex;
+    justify-content: space-between; 
+    
+    .step{
+        display: grid;
+        place-items: center;
+        width: 2rem;
+        height: 2rem;
+        background-color: #C8CFBA;
+        border-radius: 50%;
+        font-weight: 700;
+
+        &.active{
+            background-color: #355841;
+        }
+
+        &.current{
+            border: 2px solid black;    
+        }   
+    }
+}
