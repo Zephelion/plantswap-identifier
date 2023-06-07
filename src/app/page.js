@@ -2,7 +2,6 @@ import styles from './page.module.scss'
 import PlantCard from '@/components/plant-card';
 import List from '@/components/common/ordered-list/container';
 import ListItem from '@/components/common/ordered-list/item';
-import Heading from '@/components/heading';
 export default function Home() {
 
     const plants = [
@@ -40,7 +39,6 @@ export default function Home() {
 
     return (
         <section className={styles.intro}>
-            <Heading />
             <div>
                 <h2>Planten</h2>
                 <a href="#">Bekijk alle &gt;</a>
