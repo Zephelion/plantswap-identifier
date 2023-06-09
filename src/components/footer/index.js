@@ -5,8 +5,11 @@ import styles from './styles.module.scss';
 import Link from "next/link";
 
 
+
 export default function Footer() {
   const route =  usePathname();
+
+
   return (
     <footer className={styles.nav}>
       <nav>

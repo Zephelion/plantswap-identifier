@@ -1,7 +1,7 @@
 import '@/styles/app.scss';
-import { Inter } from 'next/font/google'
-import Footer from '@/components/footer'
-// import Styles from '@/styles/app.scss'
+import { Inter } from 'next/font/google';
+import Footer from '@/components/footer';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,6 +11,8 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+
     return (
         <html lang="en">
             <body className={inter.className}>
