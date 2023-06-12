@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "@/components/progress-bar";
 import { ScanFoto } from "@/components/form/scan-foto";
+import MainLayout from "@/components/layouts/main-layout";
 
 export default function NewPlant() {
     
@@ -34,23 +35,25 @@ export default function NewPlant() {
     }, [])
 
     return (
-        <section className={styles.form}>
-            <ProgressBar 
-                count={steps.length} 
-                setActiveStep={setActiveStep}
-                activeStep={activeStep}
-            />
-            
-            {steps.map((step, index) => {
-                if (step.activeStep === activeStep) {
-                    return (
-                        <div key={index}>
-                            <h2>{step.title}</h2>
-                            {step.component}
-                        </div>
-                    )
-                }
-            })}
-        </section>
+        <MainLayout>
+            <section className={styles.form}>
+                <ProgressBar 
+                    count={steps.length} 
+                    setActiveStep={setActiveStep}
+                    activeStep={activeStep}
+                />
+                
+                {steps.map((step, index) => {
+                    if (step.activeStep === activeStep) {
+                        return (
+                            <div key={index}>
+                                <h2>{step.title}</h2>
+                                {step.component}
+                            </div>
+                        )
+                    }
+                })}
+            </section>
+        </MainLayout>
     )
 }

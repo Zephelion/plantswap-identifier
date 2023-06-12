@@ -2,7 +2,7 @@ import styles from './page.module.scss'
 import PlantCard from '@/components/plant-card';
 import List from '@/components/common/ordered-list/container';
 import ListItem from '@/components/common/ordered-list/item';
-import Heading from '@/components/heading';
+import MainLayout from '@/components/layouts/main-layout';
 export default function Home() {
 
     const plants = [
@@ -39,23 +39,24 @@ export default function Home() {
     ]
 
     return (
-        <section className={styles.intro}>
-            <Heading />
-            <div>
-                <h2>Planten</h2>
-                <a href="/plants">Bekijk alle &gt;</a>
-            </div>
-            <ul>
-                {plants.map((plant, index) => (
-                    <PlantCard key={index} plant={plant} image={plant.image} name={plant.name} />
-                ))}
-            </ul>
-            <h2>Hoe werkt het?</h2>
-            <List>
-                <ListItem>Lorem ipsum</ListItem>
-                <ListItem>Lorem ipsum</ListItem>
-                <ListItem>Lorem ipsum</ListItem>
-            </List>
-        </section>
+        <MainLayout>
+            <section className={styles.intro}>
+                <div>
+                    <h2>Planten</h2>
+                    <a href="/plants">Bekijk alle &gt;</a>
+                </div>
+                <ul>
+                    {plants.map((plant, index) => (
+                        <PlantCard key={index} plant={plant} image={plant.image} name={plant.name} />
+                    ))}
+                </ul>
+                <h2>Hoe werkt het?</h2>
+                <List>
+                    <ListItem>Lorem ipsum</ListItem>
+                    <ListItem>Lorem ipsum</ListItem>
+                    <ListItem>Lorem ipsum</ListItem>
+                </List>
+            </section>
+        </MainLayout>
     )
 }
