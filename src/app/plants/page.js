@@ -9,7 +9,6 @@ export default function Home() {
   return (
     <MainLayout>
       <section className={Styles.container}>
-        <SearchBar />
         <Plants />
       </section>
     </MainLayout>
