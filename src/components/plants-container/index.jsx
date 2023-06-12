@@ -1,5 +1,5 @@
 import Plant from '../plant-card'
-import Styles from './plants-container.module.scss'
+import Styles from './styles.module.scss'
 
 const plants = [
     {
