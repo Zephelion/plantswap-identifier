@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import useDebounce from '@/utils/useDebounce'
 import Plant from '../plant-card'
 import SearchBar from '@/components/searchbar'
 import Styles from './styles.module.scss'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { LoadingSpinner } from '../loading/spinner'
+
 
 const fetchPlants = async (search = '') => {
     const data = await axios.get('/api/plants', {
@@ -16,7 +19,9 @@ const fetchPlants = async (search = '') => {
 export default function PlantsContainer() {
     const [plants, setPlants] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    
+    const [isLoading, setIsLoading] = useState(false)
+    const search = useDebounce(searchTerm, 500)
+
     useEffect(() => {
         (async () => {
             const { data } = await fetchPlants()
@@ -27,19 +32,26 @@ export default function PlantsContainer() {
 
     useEffect(() => {
         (async () => {
-            const { data } = await fetchPlants(searchTerm)
+            setIsLoading(true)
+            const { data } = await fetchPlants(search)
             setPlants(data)
+            setIsLoading(false)
         })()
-    }, [searchTerm])
+    }, [search])
 
     return (
-        <div>
-            <SearchBar input={searchTerm} setInput={setSearchTerm}/>
-            <ul className={Styles.container}>
-                {plants.map(plant => (
-                    <Plant key={plant.id} name={plant.name} image={plant.image} id={plant.id}/>
-                ))}
-            </ul>
-        </div>
+        <>
+            { isLoading 
+            ? <LoadingSpinner /> 
+            : <div>
+                <SearchBar input={searchTerm} setInput={setSearchTerm} />
+                <ul className={Styles.container}>
+                    {plants.map(plant => (
+                        <Plant key={plant.id} name={plant.name} image={plant.image} id={plant.id} />
+                    ))}
+                </ul>
+            </div>
+            }
+        </>
     )
 }
