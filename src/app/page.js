@@ -1,8 +1,12 @@
+"use client"
+
 import styles from './page.module.scss'
 import PlantCard from '@/components/plant-card';
 import List from '@/components/common/ordered-list/container';
 import ListItem from '@/components/common/ordered-list/item';
 import MainLayout from '@/components/layouts/main-layout';
+import Link from "next/link";
+
 export default function Home() {
 
     const plants = [
@@ -43,7 +47,7 @@ export default function Home() {
             <section className={styles.intro}>
                 <div>
                     <h2>Planten</h2>
-                    <a href="/plants">Bekijk alle &gt;</a>
+                    <Link href="/plants">Bekijk alle &gt;</Link>
                 </div>
                 <ul>
                     {plants.map((plant, index) => (
