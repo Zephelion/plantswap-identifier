@@ -1,7 +1,6 @@
 'use client';
 
 import Plants from '@/components/plants-container'
-import SearchBar from '@/components/searchbar'
 import Styles from './page.module.scss'
 import MainLayout from '@/components/layouts/main-layout';
 
