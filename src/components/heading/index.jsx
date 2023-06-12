@@ -1,4 +1,4 @@
-import Styles from '@/components/heading/heading.module.scss'
+import Styles from './styles.module.scss'
 
 const Heading = () => {
   return (

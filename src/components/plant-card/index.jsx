@@ -1,4 +1,3 @@
-// import Styles from '@/components/plant-card/plant-card.module.scss'
 import Styles from "./styles.module.scss";
 
 const Plant = ({name, image}) => {
