@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
 import FormData from 'form-data';
 import axios from 'axios';
+import { supabase } from '@/../lib/supabaseClient';
 
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_PLANTNET_KEY;
 const API_URL = `https://my-api.plantnet.org/v2/identify/all?include-related-images=false&no-reject=false&lang=en&api-key=${API_KEY}`;
 
 export const runtime = 'nodejs';
+const TABLE_NAME = 'cuttings';
 
 // get image from post request without formidable next js
 export async function POST(req, res) {
@@ -31,4 +33,32 @@ export async function POST(req, res) {
 
     const data = response.data;
     return NextResponse.json({ data });
+}
+
+export async function GET(req, res) {
+    const url = new URL(req.url);
+    const search = url.searchParams.get('search');
+    if(search) {
+        const { data, error } = await supabase
+        .from(TABLE_NAME)
+        .select('*')
+        .ilike('name', `%${search}%`);
+
+        if(error) {
+            return NextResponse.error(error);
+        }
+    
+        return NextResponse.json({ data });
+    } else {
+        const { data, error } = await supabase
+        .from(TABLE_NAME)
+        .select('*');    
+
+        if(error) {
+            return NextResponse.error(error);
+        }
+    
+        return NextResponse.json({ data });
+    }
+
 }

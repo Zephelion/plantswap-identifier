@@ -1,16 +1,15 @@
+'use client';
+
 import Plants from '@/components/plants-container'
-import SearchBar from '@/components/searchbar'
-import Heading from '@/components/heading'
-import Reset from '@/styles/app.scss'
-import Colors from '@/styles/variables.scss'
 import Styles from './page.module.scss'
+import MainLayout from '@/components/layouts/main-layout';
 
 export default function Home() {
   return (
-    <section className={Styles.container}>
-      <Heading />
-      <SearchBar />
-      <Plants />
-    </section>
+    <MainLayout>
+      <section className={Styles.container}>
+        <Plants />
+      </section>
+    </MainLayout>
   )
 }

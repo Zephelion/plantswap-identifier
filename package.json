@@ -9,16 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.24.0",
     "axios": "^1.4.0",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "formidable": "^3.2.5",
+    "framer-motion": "^10.12.16",
     "multiparty": "^4.2.3",
     "next": "13.4.4",
     "next-connect": "^1.0.0-next.4",
     "next-navigation": "^1.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-transition-group": "^4.4.5",
     "sass": "^1.62.1"
+  },
+  "devDependencies": {
+    "encoding": "^0.1.13"
   }
 }
