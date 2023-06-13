@@ -4,11 +4,9 @@ li.card{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 1rem;
-    background-color: #C8CFBA;
     overflow: hidden;
     width: 165px;
-    height: 215px;
+    // height: 180px;
 
     a{
         display: inline-block;
@@ -18,12 +16,20 @@ li.card{
             height: auto;
             width: 100%;
         }
-    
-        h2{
-            padding: .5rem;
-            font-size: 1rem;
-            font-weight: 600;
-            text-align: center;
+
+        div{
+            h2{
+                font-size: 1rem;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            h3{
+                text-align: center;
+                font-weight: 200;
+            }
+
         }
+    
     }
 }
