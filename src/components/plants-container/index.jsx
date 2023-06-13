@@ -1,49 +1,57 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import useDebounce from '@/utils/useDebounce'
 import Plant from '../plant-card'
+import SearchBar from '@/components/searchbar'
 import Styles from './styles.module.scss'
-
-const plants = [
-    {
-        id: 1,
-        name: "Aloe Vera",
-        image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-    },
-    {
-        id: 2,
-        name: "Snake Plant",
-        image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-    },
-    {
-        id: 4,
-        name: "Fiddle Leaf Fig",
-        image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-    },
-    {
-        id: 5,
-        name: "Fiddle Leaf Fig",
-        image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-    },
-    {
-        id: 6,
-        name: "Fiddle Leaf Fig",
-        image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-    },
-    {
-        id: 7,
-        name: "Fiddle Leaf Fig",
-        image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-    },
-]
+import { LoadingSpinner } from '../loading/spinner'
 
 
-const Plants = () => { 
-  return (
-    <ul className={Styles.container}>
-        {plants.map(plant => (
-            <Plant key={plant.id} name={plant.name} image={plant.image} />
-            // <p key={plant.id}>{plant.name}</p>
-        ))}
-    </ul>
-  )
+const fetchPlants = async (search = '') => {
+    const data = await axios.get('/api/plants', {
+        params: {
+            search
+        }
+    })
+    return data.data
 }
 
-export default Plants
+export default function PlantsContainer() {
+    const [plants, setPlants] = useState([])
+    const [searchTerm, setSearchTerm] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+    const search = useDebounce(searchTerm, 500)
+
+    useEffect(() => {
+        (async () => {
+            const { data } = await fetchPlants()
+            console.log(data)
+            setPlants(data)
+        })()
+    }, [])
+
+    useEffect(() => {
+        (async () => {
+            setIsLoading(true)
+            const { data } = await fetchPlants(search)
+            setPlants(data)
+            setIsLoading(false)
+        })()
+    }, [search])
+
+    return (
+        <>
+            { isLoading 
+            ? <LoadingSpinner /> 
+            : <div>
+                <SearchBar input={searchTerm} setInput={setSearchTerm} />
+                <ul className={Styles.container}>
+                    {plants.map(plant => (
+                        <Plant key={plant.id} name={plant.name} image={plant.image} id={plant.id} />
+                    ))}
+                </ul>
+            </div>
+            }
+        </>
+    )
+}
