@@ -1,6 +1,5 @@
 ul.container{
-    display: grid;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    grid-template-columns: 1fr 1fr;
 }
