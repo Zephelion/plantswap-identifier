@@ -5,8 +5,11 @@ const Plant = ({name, image, id}) => {
   return (
     <li className={Styles.card}>
       <Link href={`/plants/plant/${id}`}>
-        <img src={image} alt={name} width={100} height={100} />
-        <h2>{name}</h2>
+        <img src="/images/placeholder.png" alt={name} />
+        <div>
+          <h2>{name}</h2>
+          <h3>13 June ‘23</h3>
+        </div>
       </Link>
     </li>
   )
