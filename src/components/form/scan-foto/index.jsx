@@ -1,16 +1,19 @@
 import styles from "./styles.module.scss";
 import { useState } from "react";
+import FileInput from "@/components/common/file";
+import { LoadingSpinner } from "@/components/loading/spinner";
 
-export const ScanFoto = ({ progress, count }) => {
+export const ScanFoto = ({ setFotos, updateStep }) => {
     const [image, setImage] = useState(null);
     const [createObjectURL, setCreateObjectURL] = useState(null);
     const [plant, setPlant] = useState(null);
     const [isCapturing, setIsCapturing] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const API_URL = "/api/plants";
 
     const fetchPlant = async () => {
+        setIsLoading(true);
         console.log("fetching plant");
 
         const formData = new FormData();
@@ -22,8 +25,10 @@ export const ScanFoto = ({ progress, count }) => {
         const { data } = await res.json();
         console.log("data", data);
 
-        setPlant(data);
-        setLoading(false);
+        // setPlant(data);
+        setFotos(data);
+        updateStep(2);
+        setIsLoading(false);
         setIsCapturing(false);
     };
 
@@ -32,30 +37,37 @@ export const ScanFoto = ({ progress, count }) => {
         setIsCapturing(true);
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
+            console.log("file", file);
             setImage(file);
             setCreateObjectURL(URL.createObjectURL(file));
         }
     };
 
     return (
-        <section className={styles.identifier}>
-            <h1>Capture plant</h1>
-            <input
-                type="file"
-                accept="image/*"
-                capture="environment"
-                onChange={(e) => handleImageChange(e)}
-            />
-            {/* <img src={createObjectURL} /> */}
+        <>
+            {isLoading 
+            ? <LoadingSpinner />
+            : <section className={styles.identifier}>
+                <h1>Capture plant</h1>
+                <p>
+                    Upload een foto van de plant en kom erachter om welke plant het precies gaat.
+                </p>
 
-            {image && <button onClick={fetchPlant}>Capture plant</button>}
-            <div>
-                {loading && isCapturing ? (
-                    <p>Loading...</p>
-                ) : (
-                    <h2>{plant?.bestMatch}</h2>
-                )}
-            </div>
-        </section>
+                {
+                    isCapturing && !image
+                    ? <p>Bezig met het identificeren van de plant...</p>
+                    : <FileInput
+                        id="file"
+                        handleFileChange={handleImageChange}
+                        src={createObjectURL}
+                        image={image}
+                        label="Foto maken"
+                    />  
+                }
+
+                {image && <button onClick={fetchPlant}>Capture plant</button>}
+            </section>
+            }
+        </>
     );
 };
