@@ -3,13 +3,14 @@
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "@/components/progress-bar";
-import { ScanFoto } from "@/components/form/scan-foto";
+import { ScanFoto, FotoResults } from "@/components/form";
 import MainLayout from "@/components/layouts/main-layout";
-
+import MotionContainer from "@/components/common/motion";
 export default function NewPlant() {
     
     const [steps, setSteps] = useState([]);
     const [activeStep, setActiveStep] = useState(1);
+    const [fotoResults, setFotoResults] = useState([]);
 
     useEffect(() => {
         setSteps([
@@ -17,13 +18,13 @@ export default function NewPlant() {
                 title: "Scan foto 1",
                 description: "Scan de foto van de plant",
                 activeStep: 1,
-                component: <ScanFoto />
+                component: <ScanFoto setFotos={setFotoResults} updateStep={setActiveStep}/>
             },
             {
                 title: "Scan foto 2",
                 description: "Scan de foto van de plant",
                 activeStep: 2,
-                component: <ScanFoto />
+                component: <FotoResults results={fotoResults}/>
             },
             {
                 title: "Scan foto 3",
@@ -32,7 +33,7 @@ export default function NewPlant() {
                 component: <ScanFoto />
             },
         ])
-    }, [])
+    }, [fotoResults])
 
     return (
         <MainLayout>
@@ -43,13 +44,13 @@ export default function NewPlant() {
                     activeStep={activeStep}
                 />
                 
+
                 {steps.map((step, index) => {
                     if (step.activeStep === activeStep) {
                         return (
-                            <div key={index}>
-                                <h2>{step.title}</h2>
+                            <MotionContainer key={index} tag="section">
                                 {step.component}
-                            </div>
+                            </MotionContainer>
                         )
                     }
                 })}

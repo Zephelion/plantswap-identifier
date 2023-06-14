@@ -1,7 +1,7 @@
 'use client';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import { motion } from 'framer-motion';
+import MotionContainer from '@/components/common/motion';
 
 export const metadata = {
     title: 'Plantswap',
@@ -14,14 +14,9 @@ export default function MainLayout({ children }) {
             <Header>
                 <h1>{metadata.title}</h1>
             </Header>
-            <motion.main
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                exit={{ opacity: 0 }}
-                >
+            <MotionContainer tag='main'>
                 {children}
-            </motion.main> 
+            </MotionContainer>
             <Footer />
         </>
     )
