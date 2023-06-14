@@ -1,0 +1,30 @@
+li.result{
+    border: 0.5px solid var(--bos);
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 0.5em;
+
+    &.active{
+        outline: 2px solid red;
+    }
+
+    p{
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    div.information{
+        display: flex;
+        gap: 1rem;
+        img{
+            object-fit: cover;
+            // height: 100%;
+        }
+
+        div{
+            p{
+                font-weight: 200;
+            }
+        }
+    }
+}
