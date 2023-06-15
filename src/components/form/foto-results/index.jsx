@@ -1,10 +1,13 @@
+"use client"
+
 import Styles from "./styles.module.scss";
 import { useState } from "react";
 import FileInput from "@/components/common/file";
 import { LoadingSpinner } from "@/components/loading/spinner";
 import Result from "@/components/result";
+import NextButton from "@/components/next-button";
 
-export const FotoResults = async ({ results }) => {
+export const FotoResults = async ({ results, updateStep }) => {
     // const [result, setResult] = useState(null);
 
     const [activePlantId, setActivePlantId] = useState(null);
@@ -32,6 +35,7 @@ export const FotoResults = async ({ results }) => {
                     />
                 }))}
             </ul>
+            {activePlantId ? <NextButton clickFunction={updateStep} /> : null}
         </section>
         
         </>
