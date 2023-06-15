@@ -23,10 +23,10 @@ export const ScanFoto = ({ setFotos, updateStep }) => {
             body: formData,
         });
         const { data } = await res.json();
-        console.log("data", data);
+        // console.log("data", data.results);
 
         // setPlant(data);
-        setFotos(data);
+        setFotos(data.results);
         updateStep(2);
         setIsLoading(false);
         setIsCapturing(false);

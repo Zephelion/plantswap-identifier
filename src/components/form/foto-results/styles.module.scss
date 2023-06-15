@@ -11,3 +11,20 @@
         font-weight: bold;
     }
 }
+
+section.results{
+    margin-top: 35px;
+
+    div.heading{
+        display: flex;
+        gap: 10px;
+
+        span{
+            font-weight: 300;
+        }
+    }
+
+    p{
+        margin-bottom: 30px;
+    }
+}
