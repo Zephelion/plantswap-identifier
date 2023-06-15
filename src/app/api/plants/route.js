@@ -38,21 +38,25 @@ export async function POST(req, res) {
 export async function GET(req, res) {
     const url = new URL(req.url);
     const search = url.searchParams.get('search');
-    if(search) {
+    const isTaken = url.searchParams.get('is_taken');
+    
+    if(search || isTaken) {
         const { data, error } = await supabase
         .from(TABLE_NAME)
         .select('*')
-        .ilike('name', `%${search}%`);
-
+        .ilike('name', `%${search}%`)
+        .eq('is_taken', isTaken);
+        
         if(error) {
             return NextResponse.error(error);
         }
-    
+        
         return NextResponse.json({ data });
     } else {
         const { data, error } = await supabase
         .from(TABLE_NAME)
-        .select('*');    
+        .select('*')
+
 
         if(error) {
             return NextResponse.error(error);
