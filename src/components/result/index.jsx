@@ -7,12 +7,6 @@ const Result = ({id, name, image, score, active, setActive}) => {
 
   const [hasAnotherClass, setHasAnotherClass] = useState(false);
 
-  // const handleActive = (e) => {
-  //   e.preventDefault();
-  //   setActive(id)
-  // } 
-
-  // const styles = Styles.result + (active ? Styles.active : "");
 
   const handleActive = () => {
     setActive(id);
