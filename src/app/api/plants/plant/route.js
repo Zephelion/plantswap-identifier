@@ -10,7 +10,6 @@ export async function GET(req) {
 
     const { searchParams } = new URL(req.url)
     const id = searchParams.get('id')
-    console.log(id)
 
     const { data, error } = await supabase
         .from(TABLE_NAME)
@@ -20,7 +19,6 @@ export async function GET(req) {
     ;
 
     if (error) {
-        console.log(error)
         return NextResponse.error(error)
     }
 
