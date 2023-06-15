@@ -1,5 +1,18 @@
 figure.cover{
-    height: 35vh;
+    height: 40vh;
+    position: absolute;
+    top: 0;
+    left:0;
+    right: 0;
+    z-index: 1;
+
+    div{
+        height: 100%;
+        width: 100%;
+        background-color: #355841;
+        opacity: 0.5;
+        position: absolute;
+    }
 
     img{
         height: 100%;
@@ -9,8 +22,32 @@ figure.cover{
 }
 
 article.information{
-    padding: 1rem;
+    z-index: 2;
+    background-color: white;
+    position: absolute;
+    top: 35vh;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    border-radius: 30px 30px 0 0;
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 20px;
+}
+
+a.test{
+    z-index: 3;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+
+    button{
+        background-color: #355841;
+        width: 100%;
+        padding: 20px;
+        border-radius: 1000px;
+        font-weight: 700;
+        font-size: 20px;
+    }
 }

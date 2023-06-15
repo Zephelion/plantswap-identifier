@@ -8,7 +8,7 @@ export default function PlantDetailsLayout({ children }) {
             <MotionContainer tag='main'>
                 {children}
             </MotionContainer>
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }
