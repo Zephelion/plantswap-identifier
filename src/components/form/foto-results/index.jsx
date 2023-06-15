@@ -7,7 +7,7 @@ import { LoadingSpinner } from "@/components/loading/spinner";
 import Result from "@/components/result";
 import NextButton from "@/components/next-button";
 
-export const FotoResults = async ({ results, updateStep }) => {
+export const FotoResults = ({ results, updateStep }) => {
     // const [result, setResult] = useState(null);
 
     const [activePlantId, setActivePlantId] = useState(null);
