@@ -5,12 +5,9 @@ import { useState } from 'react'
 
 const Result = ({id, name, image, score, active, setActive}) => {
 
-  const [hasAnotherClass, setHasAnotherClass] = useState(false);
-
-
   const handleActive = () => {
     setActive(id);
-    setHasAnotherClass(true);
+    // setHasAnotherClass(true);
   }
 
   const styles = `${Styles.result} ${active ? Styles.active : ""}`;
