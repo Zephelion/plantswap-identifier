@@ -53,17 +53,14 @@ export const ScanFoto = ({ setFotos, updateStep }) => {
                     Upload een foto van de plant en kom erachter om welke plant het precies gaat.
                 </p>
 
-                {
-                    isCapturing && !image
-                    ? <p>Bezig met het identificeren van de plant...</p>
-                    : <FileInput
-                        id="file"
-                        handleFileChange={handleImageChange}
-                        src={createObjectURL}
-                        image={image}
-                        label="Foto maken"
-                    />  
-                }
+                <FileInput
+                    id="file"
+                    handleFileChange={handleImageChange}
+                    updateImage={setImage}
+                    src={createObjectURL}
+                    image={image}
+                    label="Foto maken"
+                />  
 
                 {image && <button onClick={fetchPlant}>Capture plant</button>}
             </section>
