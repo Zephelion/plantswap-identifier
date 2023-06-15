@@ -7,49 +7,33 @@ import Result from "@/components/result";
 export const FotoResults = async ({ results }) => {
     // const [result, setResult] = useState(null);
 
-    console.log(results);
-
     const [activePlantId, setActivePlantId] = useState(null);
 
-    const handleActive = () => {
-        console.log("clicked");
-        // setIsActive(!isActive);
-    };
-
-    // const fetchPlant = async () => {
-    //     setIsLoading(true);
-    //     console.log("fetching plant");
-
-    //     const formData = new FormData();
-    //     formData.append("image", image);
-    //     const res = await fetch(API_URL, {
-    //         method: "POST",
-    //         body: formData,
-    //     });
-    //     const { data } = await res.json();
-    //     console.log("data", data);
-
-    //     setPlant(data);
-    //     setIsLoading(false);
-    //     setIsCapturing(false);
-    // };
-
     return (
-        <ul>
-            {results.map((result => {
-                const activePlant = result.gbif.id === activePlantId;
-                console.log(activePlant);
-                console.log(activePlantId);
-                return <Result
-                    key={result.gbif.id}
-                    id={result.gbif.id}
-                    name={result.species.scientificName}
-                    image={result.images[0].url.m}
-                    score={Math.round(result.score * 100)} 
-                    setActive={setActivePlantId}
-                    active={activePlant}
-                />
-            }))}
-        </ul>
+        <>
+        <section className={Styles.results}>
+            <div className={Styles.heading}>
+                <h1>Resultaten</h1>{results.length > 1 ? <span>({results.length} planten gevonden)</span> : <span>({results.length} plant gevonden)</span>}
+            </div>
+            <p>Hier zijn de resultaten van de planten die het meest overeen komen</p>
+            <ul>
+                {results.map((result => {
+                    const activePlant = result.gbif.id === activePlantId;
+                    return <Result
+                        key={result.gbif.id}
+                        id={result.gbif.id}
+
+                        name={result.species.scientificName}
+                        image={result.images[0].url.m}
+                        score={Math.round(result.score * 100)} 
+
+                        setActive={setActivePlantId}
+                        active={activePlant}
+                    />
+                }))}
+            </ul>
+        </section>
+        
+        </>
     );
 };

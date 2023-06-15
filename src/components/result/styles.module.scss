@@ -5,7 +5,8 @@ li.result{
     border-radius: 0.5em;
 
     &.active{
-        outline: 2px solid red;
+        background-color: var(--bos);
+        color: white;
     }
 
     p{
