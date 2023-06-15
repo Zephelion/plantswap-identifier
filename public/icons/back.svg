@@ -1,10 +1,1 @@
-<svg width="37" height="42" viewBox="0 0 37 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_106_381)">
-<path d="M0.771094 19.1461C-0.254297 20.1715 -0.254297 21.8367 0.771094 22.8621L13.8961 35.9871C14.9215 37.0125 16.5867 37.0125 17.6121 35.9871C18.6375 34.9617 18.6375 33.2965 17.6121 32.2711L8.95781 23.625H34.125C35.577 23.625 36.75 22.4519 36.75 21C36.75 19.548 35.577 18.375 34.125 18.375H8.96602L17.6039 9.72889C18.6293 8.7035 18.6293 7.03827 17.6039 6.01288C16.5785 4.98749 14.9133 4.98749 13.8879 6.01288L0.76289 19.1379L0.771094 19.1461Z" fill="#000000"/>
-</g>
-<defs>
-<clipPath id="clip0_106_381">
-<rect width="36.75" height="42" fill="white"/>
-</clipPath>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
