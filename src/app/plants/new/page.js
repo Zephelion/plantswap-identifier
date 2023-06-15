@@ -24,7 +24,7 @@ export default function NewPlant() {
                 title: "Scan foto 2",
                 description: "Scan de foto van de plant",
                 activeStep: 2,
-                component: <FotoResults results={fotoResults}/>
+                component: <FotoResults results={fotoResults} updateStep={setActiveStep}/>
             },
             {
                 title: "Scan foto 3",

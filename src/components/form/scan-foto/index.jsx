@@ -14,7 +14,6 @@ export const ScanFoto = ({ setFotos, updateStep }) => {
 
     const fetchPlant = async () => {
         setIsLoading(true);
-        console.log("fetching plant");
 
         const formData = new FormData();
         formData.append("image", image);
@@ -23,21 +22,17 @@ export const ScanFoto = ({ setFotos, updateStep }) => {
             body: formData,
         });
         const { data } = await res.json();
-        console.log("data", data);
 
-        // setPlant(data);
-        setFotos(data);
+        setFotos(data.results);
         updateStep(2);
         setIsLoading(false);
         setIsCapturing(false);
     };
 
     const handleImageChange = async (e) => {
-        console.log("handleImageChange");
         setIsCapturing(true);
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
-            console.log("file", file);
             setImage(file);
             setCreateObjectURL(URL.createObjectURL(file));
         }
@@ -53,17 +48,14 @@ export const ScanFoto = ({ setFotos, updateStep }) => {
                     Upload een foto van de plant en kom erachter om welke plant het precies gaat.
                 </p>
 
-                {
-                    isCapturing && !image
-                    ? <p>Bezig met het identificeren van de plant...</p>
-                    : <FileInput
-                        id="file"
-                        handleFileChange={handleImageChange}
-                        src={createObjectURL}
-                        image={image}
-                        label="Foto maken"
-                    />  
-                }
+                <FileInput
+                    id="file"
+                    handleFileChange={handleImageChange}
+                    updateImage={setImage}
+                    src={createObjectURL}
+                    image={image}
+                    label="Foto maken"
+                />  
 
                 {image && <button onClick={fetchPlant}>Capture plant</button>}
             </section>

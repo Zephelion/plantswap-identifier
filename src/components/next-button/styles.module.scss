@@ -1,0 +1,12 @@
+button.next{
+    background-color: var(--bos);
+    color: white;
+    position: fixed;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    font-weight: 800;
+    border-radius: 2rem;
+    width: 80%;
+}

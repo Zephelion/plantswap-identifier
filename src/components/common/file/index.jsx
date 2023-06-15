@@ -4,7 +4,7 @@ import Label from "../input/label";
 import styles from "./styles.module.scss";
 import MotionContainer from "../motion";
 
-export default function FileInput({ id, handleFileChange, src, image, label }){
+export default function FileInput({ id, handleFileChange, updateImage, src, image, label }){
     return (
         <section className={styles.file}>
             <Label htmlFor={id} >
@@ -28,6 +28,7 @@ export default function FileInput({ id, handleFileChange, src, image, label }){
                         <p>{image.name}</p>
                         <p>({((image.size / 1000).toFixed(2))}kb)</p>
                     </div>
+                    <button onClick={console.log('test')}>x</button>
                 </MotionContainer>
             }
         </section>

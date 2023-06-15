@@ -1,34 +1,43 @@
-import styles from "./styles.module.scss";
+"use client"
+
+import Styles from "./styles.module.scss";
 import { useState } from "react";
 import FileInput from "@/components/common/file";
 import { LoadingSpinner } from "@/components/loading/spinner";
+import Result from "@/components/result";
+import NextButton from "@/components/next-button";
 
-export const FotoResults = ({ results }) => {
+export const FotoResults = ({ results, updateStep }) => {
     // const [result, setResult] = useState(null);
 
-    {console.log("results", results)}
-
-    const fetchPlant = async () => {
-        setIsLoading(true);
-        console.log("fetching plant");
-
-        const formData = new FormData();
-        formData.append("image", image);
-        const res = await fetch(API_URL, {
-            method: "POST",
-            body: formData,
-        });
-        const { data } = await res.json();
-        console.log("data", data);
-
-        setPlant(data);
-        setIsLoading(false);
-        setIsCapturing(false);
-    };
+    const [activePlantId, setActivePlantId] = useState(null);
 
     return (
-        <div>
-            {results.bestMatch}
-        </div>
+        <>
+        <section className={Styles.results}>
+            <div className={Styles.heading}>
+                <h1>Resultaten</h1>{results.length > 1 ? <span>({results.length} planten gevonden)</span> : <span>({results.length} plant gevonden)</span>}
+            </div>
+            <p>Hier zijn de resultaten van de planten die het meest overeen komen</p>
+            <ul>
+                {results.map((result => {
+                    const activePlant = result.gbif.id === activePlantId;
+                    return <Result
+                        key={result.gbif.id}
+                        id={result.gbif.id}
+
+                        name={result.species.scientificName}
+                        image={result.images[0].url.m}
+                        score={Math.round(result.score * 100)} 
+
+                        setActive={setActivePlantId}
+                        active={activePlant}
+                    />
+                }))}
+            </ul>
+            {activePlantId ? <NextButton clickFunction={updateStep} /> : null}
+        </section>
+        
+        </>
     );
 };

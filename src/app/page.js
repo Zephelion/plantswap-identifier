@@ -1,64 +1,28 @@
 "use client"
 
 import styles from './page.module.scss'
-import PlantCard from '@/components/plant-card';
+import FeaturedCuttings from '@/components/featured-cuttings';
 import List from '@/components/common/ordered-list/container';
 import ListItem from '@/components/common/ordered-list/item';
 import MainLayout from '@/components/layouts/main-layout';
 import Link from "next/link";
 
-export default function Home() {
-
-    const plants = [
-        {
-            id: 1,
-            name: "Aloe Vera",
-            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-        },
-        {
-            id: 2,
-            name: "Snake Plant",
-            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-        },
-        {
-            id: 4,
-            name: "Fiddle Leaf Fig",
-            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-        },
-        {
-            id: 5,
-            name: "Fiddle Leaf Fig",
-            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-        },
-        {
-            id: 6,
-            name: "Fiddle Leaf Fig",
-            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-        },
-        {
-            id: 7,
-            name: "Fiddle Leaf Fig",
-            image: "https://www.youwish.nl/wp-content/uploads/2021/05/whitelilyaloe.jpg",
-        },
-    ]
+export default async function Home() {
 
     return (
         <MainLayout>
             <section className={styles.intro}>
                 <div>
-                    <h2>Planten</h2>
+                    <h2>Laatste Planten</h2>
                     <Link href="/plants">Bekijk alle &gt;</Link>
                 </div>
-                <ul>
-                    {plants.map((plant, index) => (
-                        <PlantCard key={index} plant={plant} image={plant.image} name={plant.name} />
-                    ))}
-                </ul>
+                <FeaturedCuttings />
                 <h2>Hoe werkt het?</h2>
                 <List>
-                    <ListItem>Lorem ipsum</ListItem>
-                    <ListItem>Lorem ipsum</ListItem>
-                    <ListItem>Lorem ipsum</ListItem>
+                    <ListItem>Bekijk onze collectie van stekjes. Kies eentje uit die u bevalt!</ListItem>
+                    <ListItem>Vul uw gegevens in om in aanstelling te komen om te ruilen.</ListItem>
+                    <ListItem>Identificeer uw eigen plant en vul de desbetreffende informatie in.</ListItem>
+                    <ListItem>(Optioneel) U kunt ook gewoon een plant doneren. Vul wel de gegevens in.</ListItem>
                 </List>
             </section>
         </MainLayout>
