@@ -2,25 +2,52 @@ import styles from "./styles.module.scss";
 import Textearea from '@/components/common/input/textarea';
 import Input from '@/components/common/input/input';
 import Label from '@/components/common/input/label';
-import Button from '@/components/common/button/button';
+import SubmitButton from "@/components/common/input/submit";
+import { useEffect, useState } from "react";
 
 
-export const Tips = () => {
-  return (
-    <form className={styles.tips}>
-        <Label labelFor="water" >Water geven
-        <Textearea id="water" placeholder="Water geven"/>
-        </Label>
+export const Tips = ({
+    setTips,
+    updateStep,
+}) => {
 
-        <Label labelFor="zon" >Zonlicht
-        <Textearea id="zon" placeholder="Zonlicht"/>
-        </Label>
+    const [form, setForm] = useState({
+        hydration_guide: "",
+        sunlight: "",
+        temperature: "",
+    });
 
-        <Label labelFor="temp" >Temperatuur
-        <Textearea id="temp" placeholder="Temperatuur"/>
-        </Label>
+    const updateForm = (value, key) => {
+        setForm({
+            ...form,
+            [key]: value,
+        });
+    };
 
-        <Button buttonId="details"/>
-    </form>
-  )
+    const submitForm = (e) => {
+        e.preventDefault();
+        setTips(form);
+        updateStep((prev) => prev + 1);
+    };
+    
+	return (
+		<form className={styles.tips} onSubmit={submitForm}>
+			<Label labelFor="hydration_guide">
+                Water geven
+				<Textearea id="hydration_guide" placeholder="Water geven" updateForm={updateForm} />
+			</Label>
+
+			<Label labelFor="sunlight">
+                Zonlicht
+				<Textearea id="sunlight" placeholder="Zonlicht" updateForm={updateForm} />
+			</Label>
+
+			<Label labelFor="temperature">
+                Temperatuur
+				<Textearea id="temperature" placeholder="Temperatuur" updateForm={updateForm} />
+			</Label>
+
+			<SubmitButton id="tips" label="Doorgaan" />
+		</form>
+	)
 }
