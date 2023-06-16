@@ -1,8 +1,8 @@
-section.progress{
+section.progress {
     display: flex;
-    justify-content: space-between; 
-    
-    .step{
+    justify-content: space-between;
+
+    .step {
         display: grid;
         place-items: center;
         width: 3rem;
@@ -11,15 +11,29 @@ section.progress{
         border-radius: 50%;
         font-weight: 700;
         color: #355841;
+        font-size: 25px;
 
-        &.active{
+        &.active {
             background-color: #355841;
             color: #C8CFBA;
         }
-        
-        &.current{
-            border: 2px solid black;    
-        }   
+
+        &.current {
+            border: 2px solid black;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 6.5rem;
+            left: 1rem;
+            width: 20rem;
+            height: 15px;
+            border-radius: 15px;
+            background-color: #C8CFBA;
+            z-index: -2;
+        }
+
     }
 
 
