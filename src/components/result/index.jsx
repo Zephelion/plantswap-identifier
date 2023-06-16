@@ -1,21 +1,23 @@
+import Image from 'next/image';
 import Styles from './styles.module.scss'
 import { useState } from 'react'
 
 
 
-const Result = ({id, name, image, score, active, setActive}) => {
+const Result = ({item, active, setActive}) => {
 
   const handleActive = () => {
-    setActive(id);
-    // setHasAnotherClass(true);
+    setActive(item);
   }
+
+  const score = Math.round(item.score * 100);
 
   const styles = `${Styles.result} ${active ? Styles.active : ""}`;
   return (
     <li className={styles} onClick={() => handleActive()}>
-      <p>{name}</p>
+      <p>{item.species.scientificName}</p>
       <div className={Styles.information} >
-          <img src={image} alt="placeholder image" width={140} height={100} />
+          <Image src={item.images[0].url.m} alt="placeholder image" width={140} height={100} />
           <div>
               <p>{score}% match.</p>
           </div>
