@@ -62,8 +62,8 @@ export default function NewPlant() {
     return (
         <MainLayout>
             <section className={styles.form}>
-                <ProgressBar 
-                    count={steps.length} 
+                <ProgressBar
+                    count={steps.length}
                     setActiveStep={setActiveStep}
                     activeStep={activeStep}
                 />

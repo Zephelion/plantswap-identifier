@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './styles.module.scss'
 
 const PlantAvailable = ({name, image, id, chosenPlant}) => {
@@ -10,7 +11,7 @@ const PlantAvailable = ({name, image, id, chosenPlant}) => {
 
   return (
     <li className={styles.card} onClick={() => handleChosenPlant()}>
-      <img src="/images/placeholder.png" alt={name} />
+      <Image src="/images/placeholder.png" alt={name} width={200} height={200} />
       <div>
         <h2>{name}</h2>
         <h3>13 June ‘23</h3>
