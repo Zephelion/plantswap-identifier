@@ -1,0 +1,27 @@
+div{
+
+    div.heading{
+
+        margin-block: 30px;
+
+        div.title{
+               display: flex;
+               gap: 10px;
+        
+               span{
+                   font-weight: 300;
+                   color: var(--mosgroen);
+               }
+        }
+    
+    }
+
+    ul.container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+} 
+ 
+ 
+ 
