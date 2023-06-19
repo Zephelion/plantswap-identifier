@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Styles from './styles.module.scss'
-import { useState } from 'react'
+// import { useState } from 'react'
 
 
 
