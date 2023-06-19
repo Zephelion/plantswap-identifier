@@ -2,6 +2,7 @@ import Styles from "./styles.module.scss";
 import Link from "next/link";
 
 const Plant = ({name, image, id}) => {
+
   return (
     <li className={Styles.card}>
       <Link href={`/plants/plant/${id}`}>
