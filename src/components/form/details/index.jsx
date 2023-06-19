@@ -47,27 +47,27 @@ export const Details = ({
 		<form className={styles.details} onSubmit={submitForm}>
 			<Label labelFor="name">
 				Naam
-				<Input type="name" id="name" placeholder="Naam" updateForm={updateForm} value={form.name} />
+				<Input type="name" id="name" placeholder="Naam" updateForm={updateForm} value={form.name || ""} />
 			</Label>
 
 			<Label labelFor="latin_name">
 				Latijnse Naam
-				<Input type="name" id="latin_name" placeholder="Latijnse naam" updateForm={updateForm} value={form.latin_name} />
+				<Input type="name" id="latin_name" placeholder="Latijnse naam" updateForm={updateForm} value={form.latin_name || ""} />
 			</Label>
 
 			<Label labelFor="origin">
 				Land van herkomst
-				<Input type="name" id="origin" placeholder="Land" updateForm={updateForm} />
+				<Input type="name" id="origin" placeholder="Land" updateForm={updateForm} value={form.origin || ""} />
 			</Label>
 
 			<Label labelFor="poisonous">
 				Giftigheid
-				<Input type="name" id="poisonous" placeholder="Giftigheid" updateForm={updateForm} />
+				<Input type="name" id="poisonous" placeholder="Giftigheid" updateForm={updateForm} value={form.poisonous || ""} />
 			</Label>
 
 			<Label labelFor="description">
 				Beschrijving
-				<Textearea id="description" placeholder="Beschrijving" updateForm={updateForm} />
+				<Textearea id="description" placeholder="Beschrijving" updateForm={updateForm} value={form.description || ""} />
 			</Label>
 
 			<SubmitButton id="details" label="Volgende"/>
