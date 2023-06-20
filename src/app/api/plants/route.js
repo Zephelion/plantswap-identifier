@@ -64,9 +64,7 @@ export async function GET(req, res) {
             return NextResponse.error(error);
         }
     
-        return NextResponse.json({ 
-            id: data.id,
-        });
+        return NextResponse.json({ data });
     }
 
 }
