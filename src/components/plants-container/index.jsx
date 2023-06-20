@@ -20,7 +20,7 @@ const fetchPlants = async (search = '', isTaken = '') => {
 export default function PlantsContainer() {
     const [plants, setPlants] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    const [isTaken, setIsTaken] = useState(false)
+    const [isTaken, setIsTaken] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const search = useDebounce(searchTerm, 500)
 

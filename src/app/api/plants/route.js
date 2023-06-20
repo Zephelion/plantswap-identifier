@@ -45,7 +45,8 @@ export async function GET(req, res) {
         .from(TABLE_NAME)
         .select('*')
         .ilike('name', `%${search}%`)
-        .eq('is_taken', isTaken);
+        .eq('is_taken', isTaken)
+        .eq('is_active', true);
         
         if(error) {
             return NextResponse.error(error);
@@ -56,13 +57,16 @@ export async function GET(req, res) {
         const { data, error } = await supabase
         .from(TABLE_NAME)
         .select('*')
+        .eq('is_active', true);
 
 
         if(error) {
             return NextResponse.error(error);
         }
     
-        return NextResponse.json({ data });
+        return NextResponse.json({ 
+            id: data.id,
+        });
     }
 
 }

@@ -1,0 +1,34 @@
+li.card{
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    flex-grow: 1;
+    width: 165px;
+    // height: 180px;
+
+
+
+        img{
+            height: auto;
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+        div{
+            h2{
+                font-size: 1rem;
+                font-weight: 600;
+                text-align: center;
+            }
+
+            h3{
+                text-align: center;
+                font-weight: 200;
+            }
+
+        }
+    
+}
