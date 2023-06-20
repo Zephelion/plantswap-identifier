@@ -1,3 +1,27 @@
+section.options{
+
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 40vh;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+
+        button{
+            width: 100%;
+            &:first-of-type{
+                background-color: transparent;
+                color: var(--bos);
+                border: 3px solid var(--bos);
+            }
+        }
+    }
+}
+
 div{
 
     div.heading{
@@ -5,13 +29,13 @@ div{
         margin-block: 30px;
 
         div.title{
-               display: flex;
-               gap: 10px;
-        
-               span{
-                   font-weight: 300;
-                   color: var(--mosgroen);
-               }
+            display: flex;
+            gap: 10px;
+    
+            span{
+                font-weight: 300;
+                color: var(--mosgroen);
+            }
         }
     
     }

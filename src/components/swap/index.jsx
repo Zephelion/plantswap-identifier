@@ -2,8 +2,10 @@ import Image from 'next/image'
 import Styles from './styles.module.scss'
 import Button from '@/components/common/button'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 export const Swap = ({ chosenPlant, name, image, swapItems }) => {
+    const { push: redirect } = useRouter();
     
     const submitSwap = async () => {
 
@@ -16,6 +18,7 @@ export const Swap = ({ chosenPlant, name, image, swapItems }) => {
                 'Content-Type': 'application/json'
             }
         })
+        redirect('/plants')
     }
 
     return (
