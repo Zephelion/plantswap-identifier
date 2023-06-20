@@ -8,6 +8,7 @@ import Plant from "@/components/plant-card-available";
 import {Swap as SwapComponent} from "@/components/swap";
 import MotionContainer from "@/components/common/motion";
 import { LoadingSpinner } from "@/components/loading/spinner";
+import Button from "@/components/common/button";
 
 export const Swap = ({
     formDetails,
@@ -49,7 +50,7 @@ export const Swap = ({
 
         e.preventDefault();
         setIsLoading(true)
-        const { data: { data} } = await axios.post('/api/plants/plant', {
+        const { data: { data } } = await axios.post('/api/plants/plant', {
             plant_id: chosenPlant.id,
             only_donate: onlyDonate,
             form_details: formDetails,
@@ -60,8 +61,6 @@ export const Swap = ({
                 'Content-Type': 'application/json'
             }
         })
-
-        console.log(data)
 
         if (onlyDonate) {
             redirect('/plants')
@@ -86,14 +85,17 @@ export const Swap = ({
         onlyDonate
             ?
             (
-                <section>
-                    <h2>Swap</h2>
-                    <button onClick={(e) => submitForm({ e, onlyDonate: true })}>
-                        Only donate
-                    </button>
-                    <button onClick={(e) => submitForm({ e, onlyDonate: false })}>
-                        Swap for another plant
-                    </button>
+                <section className={styles.options}>
+                    <div>
+                        <Button clickAction={(e) => submitForm({ e, onlyDonate: true })}
+                            label="Alleen doneren"
+                        >
+                        </Button>
+                        <Button clickAction={(e) => submitForm({ e, onlyDonate: false })}
+                            label="Doneren en ruilen"
+                        >
+                        </Button>
+                    </div>
                 </section>
             )
 
