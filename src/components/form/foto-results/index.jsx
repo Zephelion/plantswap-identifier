@@ -34,8 +34,7 @@ export const FotoResults = ({ results, updateStep, setIdentifiedPlant, identifie
                     />
                 }))}
             </ul>
-            {activePlant
-             ? <NextButton clickFunction={goToNextStep} /> : null}
+            {activePlant && activePlant?.gbif?.id && <NextButton clickFunction={goToNextStep} />}
         </section>
         
         </>
