@@ -1,76 +1,97 @@
-section.progress {
-    display: flex;
-    justify-content: space-between;
+nav.progress {
+    ul {
+        display: flex;
+        justify-content: space-between;
 
-    .step {
-        display: grid;
-        place-items: center;
-        width: 3rem;
-        height: 3rem;
-        background-color: #C8CFBA;
-        border-radius: 50%;
-        font-weight: 700;
-        color: #355841;
-        font-size: 25px;
+        li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
 
-        &.active {
-            background-color: #355841;
-            color: #C8CFBA;
+            .step {
+                $size: 2rem;
 
-            &:nth-of-type(2)::after {
-                content: '';
-                position: absolute;
-                top: 6.5rem;
-                left: 1rem;
-                width: 70%;
-                height: 15px;
-                border-radius: 15px;
-                background-color: red;
-                z-index: -2;
+                display: grid;
+                place-content: center;
+                width: $size;
+                height: $size;
+                background-color: #c8cfba;
+                border-radius: 50%;
+                font-weight: 700;
+                color: #355841;
+                font-size: 25px;
+
+                $position-top: 6.2rem;
+                $position-left: 1.5rem;
+                $bar-height: 15px;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: $position-top;
+                    left: $position-left;
+                    width: 90%;
+                    height: $bar-height;
+                    border-radius: 15px;
+                    background-color: #c8cfba;
+                    z-index: -10;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: $position-left;
+                    top: $position-top;
+                    width: 25%;
+                    height: $bar-height;
+                    border-radius: 15px;
+                    background-color: #355841;
+                    z-index: -1;
+                }
+
+                &.active {
+                    background-color: #355841;
+                    background-color: hotpink;
+                    color: #c8cfba;
+                }
+
+                &.current {
+                    border: 2px solid black;
+                }
+
+                span {
+                    position: absolute;
+                    bottom: $size * -0.75;
+                    color: #355841;
+                    font-size: 1rem;
+                }
             }
 
-            &:nth-of-type(3)::after {
-                content: '';
-                position: absolute;
-                top: 6.5rem;
-                left: 1rem;
-                width: 90%;
-                height: 15px;
-                border-radius: 15px;
-                background-color: blue;
-                z-index: -3;
+            &:nth-of-type(2) {
+                .step {
+                    &.active {
+                        &::after {
+                            background-color: red;
+                            width: 70%;
+                            background-color: red;
+                            z-index: -2;
+                        }
+                    }
+                }
+            }
+
+            &:nth-of-type(3) {
+                .step {
+                    &.active {
+                        &::after {
+                            width: 90%;
+                            background-color: blue;
+                            z-index: -3;
+                        }
+                    }
+                }
             }
         }
-
-        &.current {
-            border: 2px solid black;
-        }
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 6.5rem;
-            left: 1rem;
-            width: 90%;
-            height: 15px;
-            border-radius: 15px;
-            background-color: #C8CFBA;
-            z-index: -10;
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            top: 6.5rem;
-            left: 1rem;
-            width: 25%;
-            height: 15px;
-            border-radius: 15px;
-            background-color: #355841;
-            z-index: -1;
-        }
-
     }
-
-
 }

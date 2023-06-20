@@ -24,31 +24,31 @@ export default function NewPlant() {
     useEffect(() => {
         setSteps([
             {
-                title: "Scan foto",
+                title: "Foto",
                 description: "Scan de foto van de plant",
                 activeStep: 1,
                 component: <ScanFoto setFotos={setFotoResults} updateStep={setActiveStep} setGlobalImage={setImage} globalImage={image}/>
             },
             {
-                title: "Foto results",
+                title: "Resultaten",
                 description: "See the results of the scan",
                 activeStep: 2,
                 component: <FotoResults results={fotoResults} updateStep={setActiveStep} identifiedPlant={identifiedPlant} setIdentifiedPlant={setIdentifiedPlant}/>
             },
             {
-                title: "Form details",
+                title: "Details",
                 description: "Fill in the form with the results data",
                 activeStep: 3,
                 component: <Details setDetails={setFormDetails} formDetails={formDetails} updateStep={setActiveStep} identifiedPlant={identifiedPlant}/>
             },
             {
-                title: "Form tips",
+                title: "Tips",
                 description: "Fill in the form guidelines",
                 activeStep: 4,
                 component: <Tips setTips={setFormTips} formTips={formTips} updateStep={setActiveStep}/>
             },
             {
-                title: "Swap view",
+                title: "Ruilen",
                 description: "Swap view",
                 activeStep: 5,
                 component: 
@@ -64,6 +64,7 @@ export default function NewPlant() {
             <section className={styles.form}>
                 <ProgressBar
                     count={steps.length}
+                    steps={steps}
                     setActiveStep={setActiveStep}
                     activeStep={activeStep}
                 />
