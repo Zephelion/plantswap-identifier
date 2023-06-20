@@ -1,17 +1,21 @@
 "use client"
 
 import Styles from "./styles.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FileInput from "@/components/common/file";
 import { LoadingSpinner } from "@/components/loading/spinner";
 import Result from "@/components/result";
 import NextButton from "@/components/next-button";
 
-export const FotoResults = ({ results, updateStep }) => {
-    // const [result, setResult] = useState(null);
+export const FotoResults = ({ results, updateStep, setIdentifiedPlant, identifiedPlant }) => {
 
-    const [activePlantId, setActivePlantId] = useState(null);
+    const [activePlant, setActivePlant] = useState(identifiedPlant);
 
+    const goToNextStep = () => {
+        setIdentifiedPlant(activePlant);
+        updateStep((prev) => prev + 1);
+    };
+    
     return (
         <>
         <section className={Styles.results}>
@@ -21,21 +25,16 @@ export const FotoResults = ({ results, updateStep }) => {
             <p>Hier zijn de resultaten van de planten die het meest overeen komen</p>
             <ul>
                 {results.map((result => {
-                    const activePlant = result.gbif.id === activePlantId;
+                    const isActivePlant = activePlant && activePlant?.gbif?.id === result.gbif.id;
                     return <Result
                         key={result.gbif.id}
-                        id={result.gbif.id}
-
-                        name={result.species.scientificName}
-                        image={result.images[0].url.m}
-                        score={Math.round(result.score * 100)} 
-
-                        setActive={setActivePlantId}
-                        active={activePlant}
+                        item={result}
+                        setActive={setActivePlant}
+                        active={isActivePlant}
                     />
                 }))}
             </ul>
-            {activePlantId ? <NextButton clickFunction={updateStep} /> : null}
+            {activePlant && activePlant?.gbif?.id && <NextButton clickFunction={goToNextStep} />}
         </section>
         
         </>

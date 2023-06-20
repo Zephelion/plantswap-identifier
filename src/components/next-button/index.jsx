@@ -1,8 +1,13 @@
 import Styles from "./styles.module.scss";
+import MotionContainer from "@/components/common/motion";
 
 const NextButton = ({label = "Doorgaan", clickFunction}) => {
   return (
-    <button className={Styles.next} onClick={() => clickFunction(3)}>{label}</button>
+      <MotionContainer>
+        <button className={Styles.next} onClick={clickFunction}>
+            {label}
+        </button>
+    </MotionContainer>
   )
 }
 

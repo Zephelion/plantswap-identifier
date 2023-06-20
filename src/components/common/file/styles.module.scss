@@ -44,5 +44,12 @@ section.file {
             flex-direction: column;
             width: 100%;
         }
+
+        button {
+            padding: 0;
+            aspect-ratio: 1/1;
+            border: none;
+            cursor: pointer;
+        }
     }
 }
