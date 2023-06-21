@@ -1,0 +1,14 @@
+a.action{
+    background-color: var(--primary-bg-color);
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 5em;
+    width: 9em;
+    display: flex;
+    justify-content: center;
+
+    span{
+        font-size: 0.8em;
+    }
+}
