@@ -1,0 +1,33 @@
+div.error{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #F2F5FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 20px;
+
+    img{
+        width: 10em;
+    }
+
+    h2,p{
+        color: #1D1B27;
+        text-align: center;
+    }
+
+    button{
+        background-color: #00CD8E;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 1000px;
+    }
+}
