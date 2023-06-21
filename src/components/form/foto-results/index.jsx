@@ -24,7 +24,8 @@ export const FotoResults = ({ results, updateStep, setIdentifiedPlant, identifie
             </div>
             <p>Hier zijn de resultaten van de planten die het meest overeen komen</p>
             <ul>
-                {results.map((result => {
+                {results.map(result => {
+                    
                     const isActivePlant = activePlant && activePlant?.gbif?.id === result.gbif.id;
                     return <Result
                         key={result.gbif.id}
@@ -32,7 +33,7 @@ export const FotoResults = ({ results, updateStep, setIdentifiedPlant, identifie
                         setActive={setActivePlant}
                         active={isActivePlant}
                     />
-                }))}
+                })}
             </ul>
             {activePlant && activePlant?.gbif?.id && <NextButton clickFunction={goToNextStep} />}
         </section>
