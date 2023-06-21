@@ -22,7 +22,7 @@ nav.progress {
                 color: #355841;
                 font-size: 25px;
 
-                $position-top: 6.2rem;
+                $position-top: 6rem;
                 $position-left: 1.5rem;
                 $bar-height: 15px;
 
@@ -31,7 +31,7 @@ nav.progress {
                     position: absolute;
                     top: $position-top;
                     left: $position-left;
-                    width: 90%;
+                    width: 88%;
                     height: $bar-height;
                     border-radius: 15px;
                     background-color: #c8cfba;
@@ -43,7 +43,7 @@ nav.progress {
                     position: absolute;
                     left: $position-left;
                     top: $position-top;
-                    width: 25%;
+                    width: 15%;
                     height: $bar-height;
                     border-radius: 15px;
                     background-color: #355841;
@@ -52,7 +52,6 @@ nav.progress {
 
                 &.active {
                     background-color: #355841;
-                    background-color: hotpink;
                     color: #c8cfba;
                 }
 
@@ -72,9 +71,7 @@ nav.progress {
                 .step {
                     &.active {
                         &::after {
-                            background-color: red;
-                            width: 70%;
-                            background-color: red;
+                            width: 35%;
                             z-index: -2;
                         }
                     }
@@ -85,8 +82,32 @@ nav.progress {
                 .step {
                     &.active {
                         &::after {
-                            width: 90%;
-                            background-color: blue;
+
+                            width: 60%;
+                            z-index: -3;
+                        }
+                    }
+                }
+            }
+
+            &:nth-of-type(4) {
+                .step {
+                    &.active {
+                        &::after {
+
+                            width: 75%;
+                            z-index: -3;
+                        }
+                    }
+                }
+            }
+
+            &:nth-of-type(5) {
+                .step {
+                    &.active {
+                        &::after {
+
+                            width: 88%;
                             z-index: -3;
                         }
                     }
