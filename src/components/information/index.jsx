@@ -5,23 +5,23 @@ const PlantInfo = ({ info }) => {
     return (
         <>
             <h2 className={Styles.name}>
-                {info.name}
+                {info.naam}
             </h2>
             <section className={Styles.information}>
                 <h3>Beschrijving</h3>
-                <p>{info.description}</p>
+                <p>{info.beschrijving}</p>
             </section>
             <section className={Styles.information}>
                 <h3>Land van herkomst</h3>
-                <p>{info.origin}</p>
+                <p>{info.landvanherkomst}</p>
             </section>
             <section className={Styles.information}>
                 <h3>Giftigheid</h3>
-                <p>{info.poisonous}</p>
+                <p>{info.giftig}</p>
             </section>
             <section className={Styles.information}>
                 <h3>Water geven</h3>
-                <p>{info.hydration_guide}</p>
+                <p>{info.watergeven}</p>
             </section>
         </>
     )
