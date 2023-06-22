@@ -21,8 +21,13 @@ export const ScanFoto = ({ setFotos, updateStep, globalImage, setGlobalImage, })
             body: formData,
         });
         const { data } = await res.json();
+        
+        const filteredResults = data.results.filter((result => {
+            const score = Math.round(result.score * 100);
+            return score > 0;
+        }));
 
-        setFotos(data.results);
+        setFotos(filteredResults);
         setGlobalImage({
             src: createObjectURL,
             data: image
