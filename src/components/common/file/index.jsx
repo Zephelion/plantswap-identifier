@@ -34,7 +34,7 @@ export default function FileInput({ id, handleFileChange, clearImage, clearGloba
             </Label>
             {imageSrc && imageData && 
                 <MotionContainer tag="section">
-                    <Image src={imageSrc} width={100} height={100} alt=""/>
+                    <Image src={imageSrc} width={100} height={100} alt="Add image icon"/>
                     <div>
                         <p>{imageData.name}</p>
                         <p>({((imageData.size / 1000).toFixed(2))}kb)</p>
