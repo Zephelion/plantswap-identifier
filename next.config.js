@@ -5,6 +5,9 @@ const nextConfig = {
         remotePatterns: [
             {
                 hostname: 'bs.plantnet.org',
+            },
+            {
+                hostname: 'media.graphassets.com',
             }
         ],
     },

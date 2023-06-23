@@ -110,7 +110,7 @@ export const Swap = ({
                         </div>
                         {isLoading ? <LoadingSpinner /> : <ul className={styles.container}>
                             {plants.map(plant => (
-                                <Plant key={plant.id} name={plant.name} image={plant.image} id={plant.id} chosenPlant={setChosenPlant} />
+                                <Plant key={plant.id} plant={plant} chosenPlant={setChosenPlant} />
                             ))}
                         </ul>
                         }
