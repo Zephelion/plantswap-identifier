@@ -13,11 +13,11 @@ export const Details = ({
 }) => {
     console.log("identifiedPlant", identifiedPlant);
     const [form, setForm] = useState({
-		name: "",
-		latin_name: "",
-		origin: "",
-		poisonous: "",
-		description: "",
+		naam: "",
+		latijnsenaam: "",
+		landvanherkomst: "",
+		giftig: "",
+		beschrijving: "",
 	});
 
 	const updateForm = (value, key) => {
@@ -31,8 +31,8 @@ export const Details = ({
         console.log("identifiedPlant", identifiedPlant);
         if (identifiedPlant.score) {
             setForm({
-                name: identifiedPlant?.species.commonNames[0],
-                latin_name: identifiedPlant?.species.scientificNameWithoutAuthor,  
+                naam: identifiedPlant?.species.commonNames[0],
+                latijnsenaam: identifiedPlant?.species.scientificNameWithoutAuthor,  
             })
         }
     }, [identifiedPlant]);
@@ -45,29 +45,29 @@ export const Details = ({
 
 	return (
 		<form className={styles.details} onSubmit={submitForm}>
-			<Label labelFor="name">
+			<Label labelFor="naam">
 				Naam
-				<Input type="name" id="name" placeholder="Naam" updateForm={updateForm} value={form.name || ""} />
+				<Input type="name" id="naam" placeholder="Naam" updateForm={updateForm} value={form.naam || ""} />
 			</Label>
 
-			<Label labelFor="latin_name">
+			<Label labelFor="latijnsenaam">
 				Latijnse Naam
-				<Input type="name" id="latin_name" placeholder="Latijnse naam" updateForm={updateForm} value={form.latin_name || ""} />
+				<Input type="name" id="latijnsenaam" placeholder="Latijnse naam" updateForm={updateForm} value={form.latijnsenaam || ""} />
 			</Label>
 
-			<Label labelFor="origin">
+			<Label labelFor="landvanherkomst">
 				Land van herkomst
-				<Input type="name" id="origin" placeholder="Land" updateForm={updateForm} value={form.origin || ""} />
+				<Input type="name" id="landvanherkomst" placeholder="Land" updateForm={updateForm} value={form.landvanherkomst || ""} />
 			</Label>
 
-			<Label labelFor="poisonous">
+			<Label labelFor="giftig">
 				Giftigheid
-				<Input type="name" id="poisonous" placeholder="Giftigheid" updateForm={updateForm} value={form.poisonous || ""} />
+				<Input type="name" id="giftig" placeholder="Giftigheid" updateForm={updateForm} value={form.giftig || ""} />
 			</Label>
 
-			<Label labelFor="description">
+			<Label labelFor="beschrijving">
 				Beschrijving
-				<Textearea id="description" placeholder="Beschrijving" updateForm={updateForm} value={form.description || ""} />
+				<Textearea id="beschrijving" placeholder="Beschrijving" updateForm={updateForm} value={form.beschrijving || ""} />
 			</Label>
 
 			<SubmitButton id="details" label="Volgende"/>
