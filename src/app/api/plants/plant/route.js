@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/../lib/supabaseClient';
-import hygraph from '@/../lib/ApolloClient';
+import hygraph from '@/../lib/GrapQLClient';
 
 export const runtime = 'nodejs';
 const TABLE_NAME = 'cuttings';

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import FormData from "form-data";
 import axios from "axios";
-import hygraph from "@/../lib/ApolloClient";
+import hygraph from '@/../lib/GrapQLClient';
 
 export const runtime = "nodejs";
 
