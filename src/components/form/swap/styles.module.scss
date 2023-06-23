@@ -4,19 +4,43 @@ section.options{
     display: grid;
     place-items: center;
     height: 40vh;
-
-    div{
+    max-width: 400px;
+    margin: 0 auto;
+    
+    button{
+        width: 100%;
+    }
+    
+    >div{
         display: flex;
         flex-direction: column;
         gap: 20px;
         width: 100%;
-
-        button{
+        
+        > button{
             width: 100%;
-            &:first-of-type{
-                background-color: transparent;
-                color: var(--bos);
-                border: 3px solid var(--bos);
+            background-color: transparent;
+            color: var(--bos);
+            border: 3px solid var(--bos);
+        }
+        
+        div{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 1rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--bos);
+
+            label{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+
+                input {
+                    width: 100%;
+                }
             }
         }
     }
