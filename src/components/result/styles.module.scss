@@ -1,16 +1,22 @@
 li.result{
-    border: 0.5px solid var(--bos);
+    border: 0.5px solid #00CD8E;
+    background-color: white;
     padding: 20px;
     margin-bottom: 25px;
     border-radius: 0.5em;
 
     &.active{
-        background-color: var(--bos);
+        background-color: #00CD8E;
         color: white;
     }
 
+    h2{
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: .5rem;
+    }
+
     p{
-        margin-bottom: 10px;
         font-weight: 600;
     }
 

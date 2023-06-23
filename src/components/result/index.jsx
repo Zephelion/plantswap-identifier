@@ -15,13 +15,13 @@ const Result = ({ item, active, setActive }) => {
     const styles = `${Styles.result} ${active ? Styles.active : ""}`;
     return (
         <li className={styles} onClick={() => handleActive()}>
-            <p>{item.species.scientificName}</p>
             <div className={Styles.information} >
                 {item.images[0]
                     ? <Image src={item.images[0].url.m} alt="placeholder image" width={140} height={100} />
                     : <p>Geen afbeelding beschikbaar</p>
                 }
                 <div>
+                    <h2>{item.species.scientificName}</h2>
                     <p>{score}% match.</p>
                 </div>
             </div>
