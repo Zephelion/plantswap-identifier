@@ -3,22 +3,33 @@ import Styles from './styles.module.scss'
 import Button from '@/components/common/button'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Input from '../common/input/input'
+import { useState } from 'react'
 
-export const Swap = ({ chosenPlant, name, image, swapItems }) => {
+export const Swap = ({ chosenPlant, name, image, swapItems, collector }) => {
     const { push: redirect } = useRouter();
-    
     const submitSwap = async () => {
 
-        const { plant_in, plant_out } = swapItems
+        const { stekje_in, stekje_out } = swapItems
         await axios.post('/api/plants/swap', {
-            plant_in,
-            plant_out,
+            collector,
+            stekje_in,
+            stekje_out,
         }, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         redirect('/plants')
+    }
+
+    const hasImage = chosenPlant.fotos && chosenPlant.fotos[0];
+    const placeholder = '/images/placeholder.png';
+    const chosenImage = {
+        src: hasImage ? chosenPlant.fotos[0].url : placeholder,
+        alt: hasImage ? `Foto van ${chosenPlant.naam}` : `Placeholder voor ${chosenPlant.naam}}`,
+        width: hasImage ? chosenPlant.fotos[0].width : 300,
+        height: hasImage ? chosenPlant.fotos[0].height : 300,
     }
 
     return (
@@ -39,13 +50,13 @@ export const Swap = ({ chosenPlant, name, image, swapItems }) => {
                 <div className={Styles.chosen}>
                     <div className={Styles.image}>
                         { 
-                            chosenPlant && chosenPlant.image && <Image src={chosenPlant.image} alt="Plant out image" width={200} height={200} />
+                            chosenPlant.fotos && <Image src={chosenImage.src} alt={chosenImage.alt} width={200} height={200} />
                         }
                     </div>
                     <span>{chosenPlant.name}</span>
                 </div>
             </div>
-            {chosenPlant ? <Button buttonId="swap" label="Swap!" clickAction={submitSwap} /> : null}
+            {chosenPlant && collector ? <Button buttonId="swap" label="Swap!" clickAction={submitSwap} /> : null}
         </section>
     )
 }
