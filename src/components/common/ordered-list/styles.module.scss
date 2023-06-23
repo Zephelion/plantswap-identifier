@@ -11,7 +11,7 @@ ol.container {
     gap: 1rem;
 
     padding: 1rem;
-    background-color: #C8CFBA;
+    background-color: #FFFFFF;
     color: #355841;
     border-radius: 10px;
     counter-increment: listCounter;
@@ -21,13 +21,7 @@ ol.container {
       display: block;
       font-size: 2rem;
       font-weight: 700;
-      /* background: black; */
-    }
-
-    span {
-    }
-
-    p {
+      color: var(--primary-bg-color);
     }
   }
 }

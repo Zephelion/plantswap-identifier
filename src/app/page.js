@@ -6,6 +6,8 @@ import List from '@/components/common/ordered-list/container';
 import ListItem from '@/components/common/ordered-list/item';
 import MainLayout from '@/components/layouts/main-layout';
 import Link from "next/link";
+import About from '@/components/about';
+import Map from '@/components/map';
 
 export default async function Home() {
 
@@ -13,7 +15,7 @@ export default async function Home() {
         <MainLayout>
             <section className={styles.intro}>
                 <div>
-                    <h2>Laatste Planten</h2>
+                    <h2>Recent toegevoegd</h2>
                     <Link href="/plants">Bekijk alle &gt;</Link>
                 </div>
                 <FeaturedCuttings />
@@ -24,6 +26,8 @@ export default async function Home() {
                     <ListItem>Identificeer uw eigen plant en vul de desbetreffende informatie in.</ListItem>
                     <ListItem>(Optioneel) U kunt ook gewoon een plant doneren. Vul wel de gegevens in.</ListItem>
                 </List>
+                <About />
+                <Map />
             </section>
         </MainLayout>
     )
