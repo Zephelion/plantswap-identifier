@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/../lib/supabaseClient';
+import { hygraphMutation, hygraph } from '@/../lib/GrapQLClient';
 
 const TABLE_NAME = 'swaps';
 

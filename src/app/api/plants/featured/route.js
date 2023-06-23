@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import hygraph from '@/../lib/GrapQLClient';
+import { hygraph } from '@/../lib/GrapQLClient';
+
 
 
 export async function GET(req, res) {

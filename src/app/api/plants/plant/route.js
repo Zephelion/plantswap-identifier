@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import hygraph from '@/../lib/GrapQLClient';
+import { hygraphMutation, hygraph } from '@/../lib/GrapQLClient';
+
 
 export const runtime = 'nodejs';
 const TABLE_NAME = 'cuttings';
