@@ -11,7 +11,7 @@ export const Details = ({
 	updateStep,
     identifiedPlant,
 }) => {
-    console.log("identifiedPlant", identifiedPlant);
+
     const [form, setForm] = useState({
 		naam: "",
 		latijnsenaam: "",
@@ -28,7 +28,7 @@ export const Details = ({
 	};
 
     useEffect(() => {
-        console.log("identifiedPlant", identifiedPlant);
+        
         if (identifiedPlant.score) {
             setForm({
                 naam: identifiedPlant?.species.commonNames[0],

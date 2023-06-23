@@ -2,12 +2,7 @@ import Image from 'next/image'
 import styles from './styles.module.scss'
 
 const PlantAvailable = ({ plant, setChosenPlant }) => {
-
-    const handleChosenPlant = () => {
-        // console.log('clicked')
-        setChosenPlant(plant)
-    }
-
+    
     const hasImage = plant.fotos && plant.fotos[0];
     const placeholder = '/images/placeholder.png';
     const image = {

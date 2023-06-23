@@ -78,18 +78,11 @@ export const Swap = ({
     }
 
     useEffect(() => {
-        console.log('chosenplant', chosenPlant)
         setSwapItems({
             ...swapItems,
             stekje_out: chosenPlant.id,
         })
     }, [chosenPlant])
-
-    useEffect(() => {
-        console.log('swapitems', swapItems)
-        console.log('collector', collector)
-    }, [swapItems, collector])
-
 
     return (
         onlyDonate

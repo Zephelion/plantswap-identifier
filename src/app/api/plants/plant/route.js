@@ -54,8 +54,6 @@ export async function GET(req) {
         }
     );
 
-    // console.log(stekjes[0]);
-
     if (!stekjes[0]) {
         return NextResponse.error(new Error("No stekje found"));
     }
