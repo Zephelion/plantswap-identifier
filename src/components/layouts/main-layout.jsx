@@ -1,8 +1,6 @@
 'use client';
-import Header from '@/components/header';
 import Footer from '@/components/footer';
 import MotionContainer from '@/components/common/motion';
-import LandingLink from '@/components/landing-link';
 
 export const metadata = {
     title: 'Plantswap',
@@ -12,14 +10,6 @@ export const metadata = {
 export default function MainLayout({ children }) {
     return (
         <>
-            <Header>
-                <div>
-                    <img src="/icons/plantswap.svg" alt="logo" />
-                    <h1>{metadata.title}</h1>
-                </div>
-                <p>Verbind, ruil en laat je tuin groeien met PlantSwap!</p>
-                <LandingLink />
-            </Header>
             <MotionContainer tag='main'>
                 {children}
             </MotionContainer>

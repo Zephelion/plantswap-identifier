@@ -8,11 +8,22 @@ import MainLayout from '@/components/layouts/main-layout';
 import Link from "next/link";
 import About from '@/components/about';
 import Map from '@/components/map';
+import LandingLink from '@/components/landing-link';
+import Header from '@/components/header';
 
 export default async function Home() {
 
     return (
         <MainLayout>
+            <Header>
+                <div>
+                    <img src="/icons/plantswap.svg" alt="logo" />
+                    <h1>PlantSwap</h1>
+                </div>
+                <p>Verbind, ruil en laat je tuin groeien met PlantSwap!</p>
+                <LandingLink />
+            </Header>
+
             <section className={styles.intro}>
                 <div>
                     <h2>Recent toegevoegd</h2>

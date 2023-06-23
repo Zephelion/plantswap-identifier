@@ -61,6 +61,9 @@ export default function NewPlant() {
 
     return (
         <MainLayout>
+            <header>
+                <h1>Doneren/ruilen</h1>
+            </header>
             <section className={styles.form}>
                 <ProgressBar
                     count={steps.length}
