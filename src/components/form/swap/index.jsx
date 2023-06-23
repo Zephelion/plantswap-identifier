@@ -9,6 +9,8 @@ import {Swap as SwapComponent} from "@/components/swap";
 import MotionContainer from "@/components/common/motion";
 import { LoadingSpinner } from "@/components/loading/spinner";
 import Button from "@/components/common/button";
+import Input from "@/components/common/input/input";
+import LabelInput from "@/components/common/input/labelInput";
 
 export const Swap = ({
     formDetails,
@@ -22,9 +24,11 @@ export const Swap = ({
     const [chosenPlant, setChosenPlant] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [onlyDonate, setOnlyDonate] = useState(true);
+
+    const [collector, setCollector] = useState('');
     const [swapItems, setSwapItems] = useState({
-        plant_in: '',
-        plant_out: '',
+        stekje_in: '',
+        stekje_out: '',
     });
 
     const fetchPlants = async (search = '', isTaken = 'false') => {
@@ -68,17 +72,23 @@ export const Swap = ({
             setOnlyDonate(false)
             setIsLoading(false)
             setSwapItems({
-                plant_in: data.id,
+                stekje_in: data.id,
             })
         }
     }
 
     useEffect(() => {
+        console.log('chosenplant', chosenPlant)
         setSwapItems({
             ...swapItems,
-            plant_out: chosenPlant.id,
+            stekje_out: chosenPlant.id,
         })
     }, [chosenPlant])
+
+    useEffect(() => {
+        console.log('swapitems', swapItems)
+        console.log('collector', collector)
+    }, [swapItems, collector])
 
 
     return (
@@ -91,14 +101,18 @@ export const Swap = ({
                             label="Alleen doneren"
                         >
                         </Button>
-                        <Button clickAction={(e) => submitForm({ e, onlyDonate: false })}
-                            label="Doneren en ruilen"
-                        >
-                        </Button>
+
+                        <div>
+                            <LabelInput updateValue={setCollector} label="Wie komt deze plant ophalen" id="collector" />
+                            <Button clickAction={(e) => submitForm({ e, onlyDonate: false })}
+                                label="Doneren en ruilen"
+                            >
+                            </Button>
+                        </div>
                     </div>
                 </section>
             )
-
+            
             : (
                 <MotionContainer>
                     <div>
@@ -110,13 +124,13 @@ export const Swap = ({
                         </div>
                         {isLoading ? <LoadingSpinner /> : <ul className={styles.container}>
                             {plants.map(plant => (
-                                <Plant key={plant.id} plant={plant} chosenPlant={setChosenPlant} />
+                                <Plant key={plant.id} plant={plant} setChosenPlant={setChosenPlant} />
                             ))}
                         </ul>
                         }
                     </div>
 
-                    <SwapComponent chosenPlant={chosenPlant} name={formDetails} image={image} swapItems={swapItems}/>
+                    <SwapComponent chosenPlant={chosenPlant} name={formDetails} image={image} swapItems={swapItems} collector={collector}/>
                 </MotionContainer>
             )
 
