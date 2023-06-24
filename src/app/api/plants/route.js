@@ -24,12 +24,18 @@ export async function POST(req, res) {
     const form = new FormData();
     form.append("images", buffer, file.name);
 
-    const response = await axios.post(PLANTNET_API_URL, form, {
-        headers: form.getHeaders(),
-    });
+    try {
+        const response = await axios.post(PLANTNET_API_URL, form, {
+            headers: form.getHeaders(),
+        });
 
-    const data = response.data;
-    return NextResponse.json({ data });
+        const data = response.data;
+
+        return NextResponse.json({ data });
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({ error }, { status: 500 })
+    }
 }
 
 export async function GET(req, res) {
