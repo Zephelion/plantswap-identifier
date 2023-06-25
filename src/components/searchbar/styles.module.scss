@@ -32,6 +32,10 @@ form.search {
                 font-size: 1.2em;
                 opacity: 0.3;
             }
+
+            &:focus {
+                border: 1px solid var(--primary-bg-color);
+            }
         }
 
         button {
@@ -42,7 +46,7 @@ form.search {
             place-items: center;
             width: 2rem;
             height: 2rem;
-            background-color: var(--mosgroen);
+            background-color: var(--primary-bg-color);
             border-radius: 50%;
             cursor: pointer;
         }
@@ -50,16 +54,15 @@ form.search {
 
     fieldset {
         display: flex;
-        gap: 1rem;
         border: none;
 
         label{
-
             display: grid;
             place-items: center;
-            padding: .5rem 1rem;
+            padding: .5rem;
             border-radius: 1.5625rem;
             font-weight: 700;
+            cursor: pointer;
             
             input{
                 width: 0;
@@ -71,6 +74,10 @@ form.search {
 
             &:has(input:checked){
                 background-color: var(--primary-bg-color);
+            }
+
+            &:hover{
+                background-color: rgba(0,0,0,0.1);
             }
         }
     }
