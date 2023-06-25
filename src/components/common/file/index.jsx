@@ -1,16 +1,9 @@
-"use client"
 import Image from "next/image";
 import Label from "../input/label";
 import styles from "./styles.module.scss";
 import MotionContainer from "../motion";
 
-export default function FileInput({ id, handleFileChange, clearImage, clearGlobalImage, imageSrc, imageData, label }){
-
-    const clearImages = () => {
-        setShowImage(false);
-        clearImage(null);
-        clearGlobalImage(null);
-    };
+export default function FileInput({ id, handleFileChange, imageSrc, imageData, label }){
 
     return (
         <section className={styles.file}>

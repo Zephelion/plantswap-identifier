@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Styles from './styles.module.scss'
 import Link from "next/link";
 
@@ -5,7 +6,7 @@ import Link from "next/link";
 const index = () => {
   return (
     <Link href="/plants" className={Styles.back}>
-      <img src="/icons/back.svg" alt="" />
+      <Image src="/icons/back.svg" alt="Go back icon" width={40} height={40} />
     </Link>
   )
 }
