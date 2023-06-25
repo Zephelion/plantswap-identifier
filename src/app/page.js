@@ -8,6 +8,7 @@ import About from '@/components/about';
 import Map from '@/components/map';
 import LandingLink from '@/components/landing-link';
 import Header from '@/components/header';
+import Image from 'next/image';
 
 export default async function Home() {
 
@@ -15,7 +16,7 @@ export default async function Home() {
         <MainLayout>
             <Header>
                 <div>
-                    <img src="/icons/plantswap.svg" alt="logo" />
+                    <Image src="/icons/plantswap.svg" alt="logo" width={36} height={36} />
                     <h1>PlantSwap</h1>
                 </div>
                 <p>Verbind, ruil en laat je tuin groeien met PlantSwap!</p>
