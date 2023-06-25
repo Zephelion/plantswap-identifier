@@ -1,23 +1,60 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/../lib/supabaseClient';
+import { hygraph } from '@/../lib/GrapQLClient';
 
-const TABLE_NAME = 'cuttings';
 
-export async function GET(req) {
+
+export async function GET(req, res) {
 
     const { searchParams } = new URL(req.url)
-    const limit = searchParams.get('limit')
+    const limit = parseInt(searchParams.get('limit'));
 
-    const { data, error } = await supabase
-        .from(TABLE_NAME)
-        .select('*')
-        .order('id', { ascending: false })
-        .limit(limit)
-    ;
+    const { stekjes } = await hygraph.request(
+        `
+        query GetStekjesQuery($limit: Int) {
+            stekjes(
+                orderBy: createdAt_DESC
+                first: $limit
+            ) {
+                id
+                naam
+                slug
+                beschrijving
+                landvanherkomst
+                voeding
+                verpotten
+                giftig
+                temperatuur
+                watergeven
+                zonlicht
+                categories {
+                  id
+                  naam
+                }
+                publishedBy {
+                  id
+                  name
+                }
+                fotos {
+                  fileName
+                  height
+                  width
+                  url
+                }
+                createdAt
+              }
+        }           
+        `,
+        {
+            limit,
+        }
+    );
 
-    if (error) {
-        return NextResponse.error(error)
+    if (!stekjes) {
+        return NextResponse.error(new Error('No stekjes found'));
     }
 
-    return NextResponse.json({ data });
+    return NextResponse.json({
+        data: stekjes
+    });
 }
+

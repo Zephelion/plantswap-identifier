@@ -7,12 +7,11 @@ import SearchBar from '@/components/searchbar'
 import Styles from './styles.module.scss'
 import { LoadingSpinner } from '../loading/spinner'
 
-
-const fetchPlants = async (search = '', isTaken = '') => {
+const fetchPlants = async (search = '', isAvailable = null) => {
     const data = await axios.get('/api/plants', {
         params: {
             search,
-            is_taken: isTaken,
+            available: isAvailable,
         }
     })
     return data.data
@@ -21,7 +20,7 @@ const fetchPlants = async (search = '', isTaken = '') => {
 export default function PlantsContainer() {
     const [plants, setPlants] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    const [isTaken, setIsTaken] = useState(null)
+    const [isAvailable, setIsAvailable] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const search = useDebounce(searchTerm, 500)
 
@@ -31,27 +30,30 @@ export default function PlantsContainer() {
             setPlants(data)
         })()
     }, []);
-
+    
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const { data } = await fetchPlants(search, isTaken)
+            const { data } = await fetchPlants(search, isAvailable)
             setPlants(data)
             setIsLoading(false)
         })()
-    }, [search, isTaken]);
+    }, [search, isAvailable]);
 
     return (
         <>
             <div>
-                <SearchBar input={searchTerm} setInput={setSearchTerm} setIsTaken={setIsTaken} />
+                <SearchBar input={searchTerm} setInput={setSearchTerm} setIsAvailable={setIsAvailable} />
                 {
                     isLoading
                     ? <LoadingSpinner />
                     : <ul className={Styles.container}>
-                        {plants.map(plant => (
-                            <Plant key={plant.id} name={plant.name} image={plant.image} id={plant.id} />
-                        ))}
+                        {plants.length 
+                            ? plants.map(plant => (
+                                <Plant key={plant.id} plant={plant} />
+                            ))
+                            : <p>No results found</p>
+                        }
                     </ul>
                 }
             </div>

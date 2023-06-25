@@ -1,5 +1,4 @@
 'use client';
-import Header from '@/components/header';
 import Footer from '@/components/footer';
 import MotionContainer from '@/components/common/motion';
 
@@ -11,9 +10,6 @@ export const metadata = {
 export default function MainLayout({ children }) {
     return (
         <>
-            <Header>
-                <h1>{metadata.title}</h1>
-            </Header>
             <MotionContainer tag='main'>
                 {children}
             </MotionContainer>

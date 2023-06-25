@@ -7,12 +7,13 @@ export default function FileInput({ id, handleFileChange, imageSrc, imageData, l
 
     return (
         <section className={styles.file}>
-            <Label htmlFor={id} >
-                {!showImage && 
-                    <span className={styles.file__icon}>
-                        +
-                    </span>
-                }
+            {!imageSrc && !imageData 
+            ? <Label htmlFor={id} >
+                
+                <span className={styles.file__icon}>
+                    +
+                </span>
+                
                 {label}
                 <input
                     id={id}
@@ -22,15 +23,10 @@ export default function FileInput({ id, handleFileChange, imageSrc, imageData, l
                     onChange={(e) => handleFileChange(e)}
                     />
             </Label>
-            {imageSrc && imageData && 
-                <MotionContainer tag="section">
-                    <Image src={imageSrc} width={100} height={100} alt=""/>
-                    <div>
-                        <p>{imageData.name}</p>
-                        <p>({((imageData.size / 1000).toFixed(2))}kb)</p>
-                    </div>
-                    <button onClick={clearImages}>x</button>
-                </MotionContainer>
+
+            : <MotionContainer tag="section">
+                    <Image src={imageSrc} width={100} height={100} alt="Add image icon"/>
+               </MotionContainer>
             }
         </section>
     );

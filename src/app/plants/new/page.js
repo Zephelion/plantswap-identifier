@@ -61,6 +61,9 @@ export default function NewPlant() {
 
     return (
         <MainLayout>
+            <header>
+                <h1>Doneren/ruilen</h1>
+            </header>
             <section className={styles.form}>
                 <ProgressBar
                     count={steps.length}
@@ -69,7 +72,6 @@ export default function NewPlant() {
                     activeStep={activeStep}
                 />
                 
-
                 {steps.map((step, index) => {
                     if (step.activeStep === activeStep) {
                         return (

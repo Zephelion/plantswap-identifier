@@ -9,11 +9,20 @@
         justify-content: space-between;
         align-items: center;
 
+        h2{
+            font-size: 1.1em;
+        }
+
         a{
             font-weight: 300;
             color: #355841;
         }
     }
+
+    h2{
+        font-size: 1.1em;
+    }
+
     ul {
         display: flex;
         gap: 1rem;
