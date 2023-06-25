@@ -20,11 +20,11 @@ const Plant = ({ plant }) => {
         <li className={Styles.card}>
             <Link href={`/plants/plant/${plant.slug}/${plant.id}`}>
                 <Image src={image.src} alt={image.alt} width={image.width} height={image.height} priority={true} placeholder={placeholder}/>
-                <div>
+                {/* <div>
                     <h2>{plant.naam}</h2>
                     <h3>{createdAt}</h3>
                     <p>{plant.beschikbaar ? 'Beschikbaar' : 'Niet beschikbaar'}</p>
-                </div>
+                </div> */}
             </Link>
         </li>
     )
