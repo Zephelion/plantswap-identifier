@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/../lib/supabaseClient';
-import hygraph from '@/../lib/ApolloClient';
+import { hygraphMutation, hygraph } from '@/../lib/GrapQLClient';
+
 
 export const runtime = 'nodejs';
 const TABLE_NAME = 'cuttings';
@@ -54,8 +54,6 @@ export async function GET(req) {
         }
     );
 
-    // console.log(stekjes[0]);
-
     if (!stekjes[0]) {
         return NextResponse.error(new Error("No stekje found"));
     }
@@ -69,28 +67,73 @@ export async function POST(req) {
 
     const body = await req.json()
 
-    const { data, error } = await supabase
-        .from(TABLE_NAME)
-        .insert({
-            name: body.form_details.name || "",
-            latin_name: body.form_details.latin_name || "",
-            origin: body.form_details.origin || "",
-            poisonous: body.form_details.poisonous || "",
-            description: body.form_details.description || "",
-            temperature: body.form_tips.temperature || "",
-            sunlight: body.form_tips.sunlight || "",
-            hydration_guide: body.form_tips.hydration_guide || "",
-        })
-        .select('id')
-        .single()
-    ;
-
-    if (error) {
-        console.log(error)
-        return NextResponse.error(error)
+    function slugify(str) {
+        str = str.replace(/^\s+|\s+$/g, ''); 
+        str = str.toLowerCase(); 
+        str = str.replace(/[^a-z0-9 -]/g, '')
+                 .replace(/\s+/g, '-')
+                 .replace(/-+/g, '-');
+        return str;
     }
 
-    return NextResponse.json({ 
-        data
+
+
+    // INsert into hygraph mutation
+    const { createStekje } = await hygraphMutation.request(
+        `
+        mutation CreateStekjeMutation(
+            $naam: String!,
+            $beschrijving: String!,
+            $landvanherkomst: String!,
+            $voeding: String!,
+            $verpotten: String!,
+            $giftig: String!,
+            $slug: String!,
+            $temperatuur: String!,
+            $zonlicht: String!,
+            $watergeven: String!,
+            $beschikbaar: Boolean!,
+            $actief: Boolean!,
+        ) {
+            createStekje(
+                data: {
+                    naam: $naam,
+                    beschrijving: $beschrijving,
+                    landvanherkomst: $landvanherkomst,
+                    voeding: $voeding,
+                    verpotten: $verpotten,
+                    giftig: $giftig,
+                    slug: $slug,
+                    temperatuur: $temperatuur,
+                    zonlicht: $zonlicht,
+                    watergeven: $watergeven,
+                    beschikbaar: $beschikbaar,
+                    actief: $actief,
+                }
+            ) 
+            {
+                id
+            }
+        }          
+        `,
+        {
+            naam: body.form_details.naam || "",
+            slug: slugify(body.form_details.naam) || "",
+            latijnsenaam: body.form_details.latijnsenaam || "",
+            beschrijving: body.form_details.beschrijving || "",
+            landvanherkomst: body.form_details.landvanherkomst || "",
+            voeding: body.form_tips.voeding || "",
+            verpotten: body.form_tips.verpotten || "",
+            giftig: body.form_tips.giftig || "",
+            temperatuur: body.form_tips.temperatuur || "",
+            zonlicht: body.form_tips.zonlicht || "",
+            watergeven: body.form_tips.watergeven || "",
+            beschikbaar: true,
+            actief: true,
+        }
+    );
+
+    return NextResponse.json({
+        data: createStekje,
     });
 }
