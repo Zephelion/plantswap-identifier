@@ -37,7 +37,7 @@ const FeaturedCuttings = ({ limit = 6 }) => {
                 ? <LoadingSpinner />
                 : <MotionContainer tag='ul' >
                     {featuredCuttings.map((plant, index) => (
-                        <PlantCard key={index} plant={plant} image={plant.image} name={plant.name} id={plant.id} />
+                        <PlantCard key={index} plant={plant} />
                     ))}
                 </MotionContainer>
             }

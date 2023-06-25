@@ -12,6 +12,7 @@ export default function Radio({ id, name, label, updateChange, value }) {
                 onInput={(e) => {
                     updateChange(value)
                 }} 
+                defaultChecked={value}
             />
         </Label>
     );

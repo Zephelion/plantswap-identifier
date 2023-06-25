@@ -4,26 +4,29 @@ import Styles from './styles.module.scss'
 
 
 
-const Result = ({item, active, setActive}) => {
+const Result = ({ item, active, setActive }) => {
 
-  const handleActive = () => {
-    setActive(item);
-  }
+    const handleActive = () => {
+        setActive(item);
+    }
 
-  const score = Math.round(item.score * 100);
+    const score = Math.round(item.score * 100);
 
-  const styles = `${Styles.result} ${active ? Styles.active : ""}`;
-  return (
-    <li className={styles} onClick={() => handleActive()}>
-      <p>{item.species.scientificName}</p>
-      <div className={Styles.information} >
-          <Image src={item.images[0].url.m} alt="placeholder image" width={140} height={100} />
-          <div>
-              <p>{score}% match.</p>
-          </div>
-      </div>
-    </li>
-  )
+    const styles = `${Styles.result} ${active ? Styles.active : ""}`;
+    return (
+        <li className={styles} onClick={() => handleActive()}>
+            <p>{item.species.scientificName}</p>
+            <div className={Styles.information} >
+                {item.images[0]
+                    ? <Image src={item.images[0].url.m} alt="placeholder image" width={140} height={100} />
+                    : <p>Geen afbeelding beschikbaar</p>
+                }
+                <div>
+                    <p>{score}% match.</p>
+                </div>
+            </div>
+        </li>
+    )
 }
 
 export default Result

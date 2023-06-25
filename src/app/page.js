@@ -1,19 +1,30 @@
-"use client"
-
 import styles from './page.module.scss'
 import FeaturedCuttings from '@/components/featured-cuttings';
 import List from '@/components/common/ordered-list/container';
 import ListItem from '@/components/common/ordered-list/item';
 import MainLayout from '@/components/layouts/main-layout';
 import Link from "next/link";
+import About from '@/components/about';
+import Map from '@/components/map';
+import LandingLink from '@/components/landing-link';
+import Header from '@/components/header';
 
 export default async function Home() {
 
     return (
         <MainLayout>
+            <Header>
+                <div>
+                    <img src="/icons/plantswap.svg" alt="logo" />
+                    <h1>PlantSwap</h1>
+                </div>
+                <p>Verbind, ruil en laat je tuin groeien met PlantSwap!</p>
+                <LandingLink />
+            </Header>
+
             <section className={styles.intro}>
                 <div>
-                    <h2>Laatste Planten</h2>
+                    <h2>Recent toegevoegd</h2>
                     <Link href="/plants">Bekijk alle &gt;</Link>
                 </div>
                 <FeaturedCuttings />
@@ -24,6 +35,8 @@ export default async function Home() {
                     <ListItem>Identificeer uw eigen plant en vul de desbetreffende informatie in.</ListItem>
                     <ListItem>(Optioneel) U kunt ook gewoon een plant doneren. Vul wel de gegevens in.</ListItem>
                 </List>
+                <About />
+                <Map />
             </section>
         </MainLayout>
     )

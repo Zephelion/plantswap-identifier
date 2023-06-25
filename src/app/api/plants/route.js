@@ -1,17 +1,15 @@
-import { NextResponse } from 'next/server';
-import FormData from 'form-data';
-import axios from 'axios';
-import { supabase } from '@/../lib/supabaseClient';
+import { NextResponse } from "next/server";
+import FormData from "form-data";
+import axios from "axios";
+import { hygraph } from '@/../lib/GrapQLClient';
 
-const API_KEY = process.env.NEXT_PUBLIC_PLANTNET_KEY;
-const API_URL = `https://my-api.plantnet.org/v2/identify/all?include-related-images=true&no-reject=false&lang=en&api-key=${API_KEY}`;
 
-export const runtime = 'nodejs';
-const TABLE_NAME = 'cuttings';
+export const runtime = "nodejs";
 
-// get image from post request without formidable next js
+const PLANTNET_API_KEY = process.env.NEXT_PUBLIC_PLANTNET_KEY;
+const PLANTNET_API_URL = `https://my-api.plantnet.org/v2/identify/all?include-related-images=true&no-reject=false&lang=en&api-key=${PLANTNET_API_KEY}`;
+
 export async function POST(req, res) {
-
     const reqFormData = await req.formData();
     const file = reqFormData.get("image");
 
@@ -25,46 +23,91 @@ export async function POST(req, res) {
     const buffer = Buffer.concat(chunks);
 
     const form = new FormData();
-    form.append('images', buffer, file.name);
+    form.append("images", buffer, file.name);
 
-    const response = await axios.post(API_URL, form, {
-        headers: form.getHeaders()
-    });
+    try {
+        const response = await axios.post(PLANTNET_API_URL, form, {
+            headers: form.getHeaders(),
+        });
 
-    const data = response.data;
-    return NextResponse.json({ data });
+        const data = response.data;
+
+        return NextResponse.json({ data });
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({ error }, { status: 500 })
+    }
 }
 
 export async function GET(req, res) {
-    const url = new URL(req.url);
-    const search = url.searchParams.get('search');
-    const isTaken = url.searchParams.get('is_taken');
+    const { searchParams } = new URL(req.url);
+    const search = searchParams.get("search");
+    let available = searchParams.get("available") 
     
-    if(search || isTaken) {
-        const { data, error } = await supabase
-        .from(TABLE_NAME)
-        .select('*')
-        .ilike('name', `%${search}%`)
-        .eq('is_taken', isTaken)
-        .eq('is_active', true);
-        
-        if(error) {
-            return NextResponse.error(error);
-        }
-        
-        return NextResponse.json({ data });
-    } else {
-        const { data, error } = await supabase
-        .from(TABLE_NAME)
-        .select('*')
-        .eq('is_active', true);
-
-
-        if(error) {
-            return NextResponse.error(error);
-        }
-    
-        return NextResponse.json({ data });
+    switch (available) {
+        case "true":
+            available = !true;
+            break;
+        case "false":
+            available = !false;
+            break;
+        default:
+            available = null;
     }
 
+    // ! Add pagination
+    const { stekjes } = await hygraph.request(
+        `
+        query GetStekjesQuery($search: String, $available: Boolean) {
+            stekjes(
+                orderBy: createdAt_DESC
+                first: 100
+                where: {
+                    naam_contains: $search, 
+                    beschikbaar_not: $available,
+                }
+            ) {
+                id
+                naam
+                slug
+                beschrijving
+                landvanherkomst
+                voeding
+                verpotten
+                giftig
+                temperatuur
+                watergeven
+                zonlicht
+                categories {
+                    id
+                    naam
+                }
+                publishedBy {
+                    id
+                    name
+                }
+                fotos {
+                    fileName
+                    height
+                    width
+                    url
+                }
+                beschikbaar
+                createdAt
+            }
+        }                   
+        `,
+        {
+            search,
+            available,
+        }
+    );
+
+    if (!stekjes) {
+        return NextResponse.error(new Error("No stekjes found"));
+    }
+
+    return NextResponse.json({
+        data: stekjes,
+    });
 }

@@ -1,28 +1,19 @@
-"use client"
 import Image from "next/image";
 import Label from "../input/label";
 import styles from "./styles.module.scss";
 import MotionContainer from "../motion";
-import { useEffect, useState } from "react";
 
-export default function FileInput({ id, handleFileChange, clearImage, clearGlobalImage, imageSrc, imageData, label }){
-
-    const [showImage, setShowImage] = useState(false);
-
-    const clearImages = () => {
-        setShowImage(false);
-        clearImage(null);
-        clearGlobalImage(null);
-    };
+export default function FileInput({ id, handleFileChange, imageSrc, imageData, label }){
 
     return (
         <section className={styles.file}>
-            <Label htmlFor={id} >
-                {!showImage && 
-                    <span className={styles.file__icon}>
-                        +
-                    </span>
-                }
+            {!imageSrc && !imageData 
+            ? <Label htmlFor={id} >
+                
+                <span className={styles.file__icon}>
+                    +
+                </span>
+                
                 {label}
                 <input
                     id={id}
@@ -32,15 +23,10 @@ export default function FileInput({ id, handleFileChange, clearImage, clearGloba
                     onChange={(e) => handleFileChange(e)}
                     />
             </Label>
-            {imageSrc && imageData && 
-                <MotionContainer tag="section">
-                    <Image src={imageSrc} width={100} height={100} alt=""/>
-                    <div>
-                        <p>{imageData.name}</p>
-                        <p>({((imageData.size / 1000).toFixed(2))}kb)</p>
-                    </div>
-                    <button onClick={clearImages}>x</button>
-                </MotionContainer>
+
+            : <MotionContainer tag="section">
+                    <Image src={imageSrc} width={100} height={100} alt="Add image icon"/>
+               </MotionContainer>
             }
         </section>
     );

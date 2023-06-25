@@ -10,7 +10,7 @@
 
 body {
   color: #355841;
-  background-color: #fff;
+  background-color: #F2F5FF;
 }
 
 html,
@@ -20,7 +20,8 @@ body {
 }
 
 header {
-  padding: 1rem;
+  // padding: 1rem;
+  padding-top: 3rem;
 }
 
 main {
@@ -28,7 +29,8 @@ main {
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-  padding-bottom: 6rem;
+  padding-bottom: 10rem;
+  gap: 45px;
 }
 
 a {
