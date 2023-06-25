@@ -6,7 +6,6 @@ import SearchBar from '@/components/searchbar'
 import Styles from './styles.module.scss'
 import { LoadingSpinner } from '../loading/spinner'
 
-
 const fetchPlants = async (search = '', isAvailable = null) => {
     const data = await axios.get('/api/plants', {
         params: {
@@ -27,7 +26,6 @@ export default function PlantsContainer() {
     useEffect(() => {
         (async () => {
             const { data } = await fetchPlants()
-            console.log(data)
             setPlants(data)
         })()
     }, []);
@@ -36,7 +34,6 @@ export default function PlantsContainer() {
         (async () => {
             setIsLoading(true)
             const { data } = await fetchPlants(search, isAvailable)
-            console.log(data)
             setPlants(data)
             setIsLoading(false)
         })()

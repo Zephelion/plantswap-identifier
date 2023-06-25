@@ -30,9 +30,10 @@ export default function FileInput({ id, handleFileChange, clearImage, clearGloba
                     onChange={(e) => handleFileChange(e)}
                     />
             </Label>
+
             : <MotionContainer tag="section">
-                    <Image src={imageSrc} width={100} height={100} alt=""/>
-                </MotionContainer>
+                    <Image src={imageSrc} width={100} height={100} alt="Add image icon"/>
+               </MotionContainer>
             }
         </section>
     );
