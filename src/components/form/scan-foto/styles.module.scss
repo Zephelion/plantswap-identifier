@@ -10,4 +10,28 @@
         font-size: 1.25rem;
         font-weight: bold;
     }
+    
+    > div{
+        position: fixed;
+        inset-inline: 1rem;
+        bottom: 6rem;
+        flex: 0 1 100px;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+
+            &:first-child {
+                background-color: var(--tertiary-bg-color);
+            }
+            
+            &:last-child {
+                background-color: var(--primary-bg-color);
+            }
+        }
+    }
 }
