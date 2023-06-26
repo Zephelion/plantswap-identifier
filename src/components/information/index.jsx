@@ -1,27 +1,60 @@
 import Styles from './styles.module.scss'
+import Image from "next/image";
 
 const PlantInfo = ({ info }) => {
+    const date = new Date(info.createdAt)
+    const createdAt = date.toLocaleDateString('nl-NL', {day: 'numeric', month: 'long', year: 'numeric'})
 
     return (
         <>
-            <h2 className={Styles.name}>
-                {info.naam}
-            </h2>
+            <section className={Styles.heading}>
+                <h2>{info.naam}</h2>
+                <p>{createdAt}</p>
+            </section>
+
             <section className={Styles.information}>
-                <h3>Beschrijving</h3>
                 <p>{info.beschrijving}</p>
             </section>
+
             <section className={Styles.information}>
-                <h3>Land van herkomst</h3>
+                <h3>Moeilijkheid</h3>
+                <p>Uitdagend</p>
+                {/* <p>{info.categories[0].naam}</p> */}
+            </section>
+
+            <section className={Styles.information}>
+                <h3>Herkomst</h3>
                 <p>{info.landvanherkomst}</p>
             </section>
+
             <section className={Styles.information}>
                 <h3>Giftigheid</h3>
                 <p>{info.giftig}</p>
             </section>
+
             <section className={Styles.information}>
                 <h3>Water geven</h3>
                 <p>{info.watergeven}</p>
+            </section>
+
+            <section className={Styles.information}>
+                <h3>Temperatuur</h3>
+                <p>{info.temperatuur}</p>
+            </section>
+
+            <section className={Styles.information}>
+                <h3>Verpotten</h3>
+                <p>{info.verpotten}</p>
+            </section>
+
+            <section className={Styles.information}>
+                <h3>Voeding</h3>
+                <p>{info.voeding}</p>
+            </section>
+
+            <section className={Styles.information}>
+                <h3>Zonlicht</h3>
+                <p>{info.zonlicht}</p>
             </section>
         </>
     )
