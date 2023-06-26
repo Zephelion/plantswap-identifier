@@ -29,6 +29,17 @@ ol.container {
 @media (min-width: 990px) {
   ol.container{
     flex-direction: row;
+
+    li.item{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+
+      &::before {
+        font-size: 3rem;
+      }
+    }
   }
 } 
 
