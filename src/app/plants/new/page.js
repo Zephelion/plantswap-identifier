@@ -8,7 +8,7 @@ import MainLayout from "@/components/layouts/main-layout";
 import MotionContainer from "@/components/common/motion";
 
 export default function NewPlant() {
-    
+
     const [steps, setSteps] = useState([]);
     const [activeStep, setActiveStep] = useState(1);
 

@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import { hygraphMutation, hygraph } from '@/../lib/GrapQLClient';
 
-
 export const runtime = 'nodejs';
-const TABLE_NAME = 'cuttings';
 
 export async function GET(req) {
 
@@ -77,6 +75,16 @@ export async function POST(req) {
     }
 
 
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+
+    const dateString = `${year}${month}${day}-${hour}${minute}${second}`; 
 
     // INsert into hygraph mutation
     const { createStekje } = await hygraphMutation.request(
@@ -118,7 +126,7 @@ export async function POST(req) {
         `,
         {
             naam: body.form_details.naam || "",
-            slug: slugify(body.form_details.naam) || "",
+            slug: slugify(body.form_details.naam) + "-" + dateString,
             latijnsenaam: body.form_details.latijnsenaam || "",
             beschrijving: body.form_details.beschrijving || "",
             landvanherkomst: body.form_details.landvanherkomst || "",
@@ -130,6 +138,22 @@ export async function POST(req) {
             watergeven: body.form_tips.watergeven || "",
             beschikbaar: true,
             actief: true,
+        }
+    );
+
+    await hygraphMutation.request(
+        `
+        mutation publishStekje($id: ID!) {
+            publishStekje(
+                where: { id: $id }, 
+                to: PUBLISHED
+            ) {
+                id
+            }
+        }
+        `,
+        {
+            id: createStekje.id,
         }
     );
 

@@ -40,6 +40,10 @@ section.options{
 
                 input {
                     width: 100%;
+
+                    &::placeholder{
+                        opacity: .5;
+                    }
                 }
             }
         }
