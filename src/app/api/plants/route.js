@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import FormData from "form-data";
 import axios from "axios";
-import hygraph from "@/../lib/ApolloClient";
+import { hygraph } from '@/../lib/GrapQLClient';
+
 
 export const runtime = "nodejs";
 
@@ -24,12 +25,18 @@ export async function POST(req, res) {
     const form = new FormData();
     form.append("images", buffer, file.name);
 
-    const response = await axios.post(PLANTNET_API_URL, form, {
-        headers: form.getHeaders(),
-    });
+    try {
+        const response = await axios.post(PLANTNET_API_URL, form, {
+            headers: form.getHeaders(),
+        });
 
-    const data = response.data;
-    return NextResponse.json({ data });
+        const data = response.data;
+
+        return NextResponse.json({ data });
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({ error }, { status: 500 })
+    }
 }
 
 export async function GET(req, res) {
@@ -95,9 +102,6 @@ export async function GET(req, res) {
             available,
         }
     );
-
-    // console.log(stekjes[0]);
-    console.log("aantal stekjes", stekjes.length);
 
     if (!stekjes) {
         return NextResponse.error(new Error("No stekjes found"));

@@ -1,5 +1,3 @@
-"use client"
-
 import styles from './page.module.scss'
 import FeaturedCuttings from '@/components/featured-cuttings';
 import List from '@/components/common/ordered-list/container';

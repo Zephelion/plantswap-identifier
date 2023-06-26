@@ -1,4 +1,3 @@
-'use client'
 import Footer from '@/components/footer';
 import MotionContainer from '@/components/common/motion';
 

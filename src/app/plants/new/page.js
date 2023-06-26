@@ -72,7 +72,6 @@ export default function NewPlant() {
                     activeStep={activeStep}
                 />
                 
-
                 {steps.map((step, index) => {
                     if (step.activeStep === activeStep) {
                         return (

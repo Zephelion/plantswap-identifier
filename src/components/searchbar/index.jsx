@@ -1,4 +1,3 @@
-'use client'
 import Styles from './styles.module.scss'
 import RadioInput from '@/components/common/input/radio'
 

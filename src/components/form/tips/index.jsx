@@ -12,9 +12,9 @@ export const Tips = ({
 }) => {
 
     const [form, setForm] = useState({
-        hydration_guide: "",
-        sunlight: "",
-        temperature: "",
+        watergeven: "",
+        zonlicht: "",
+        temperatuur: "",
     });
 
     const updateForm = (value, key) => {
@@ -32,19 +32,19 @@ export const Tips = ({
     
 	return (
 		<form className={styles.tips} onSubmit={submitForm}>
-			<Label labelFor="hydration_guide">
+			<Label labelFor="watergeven">
                 Water geven
-				<Textearea id="hydration_guide" placeholder="Water geven" updateForm={updateForm} />
+				<Textearea id="watergeven" placeholder="Water geven" updateForm={updateForm} />
 			</Label>
 
-			<Label labelFor="sunlight">
+			<Label labelFor="zonlicht">
                 Zonlicht
-				<Textearea id="sunlight" placeholder="Zonlicht" updateForm={updateForm} />
+				<Textearea id="zonlicht" placeholder="Zonlicht" updateForm={updateForm} />
 			</Label>
 
-			<Label labelFor="temperature">
+			<Label labelFor="temperatuur">
                 Temperatuur
-				<Textearea id="temperature" placeholder="Temperatuur" updateForm={updateForm} />
+				<Textearea id="temperatuur" placeholder="Temperatuur" updateForm={updateForm} />
 			</Label>
 
 			<SubmitButton id="tips" label="Doorgaan" />
