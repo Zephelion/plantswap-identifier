@@ -49,11 +49,11 @@ const Page = ({ params }) => {
                 </figure>
                 <article className={Styles.information}>
                     {
-                        loading ? <Loading /> : <Information info={info} />
+                        loading ? <Loading /> : <Information info={info}  />
                     }
                 </article>
-                <Link className={Styles.test} href={`/plants/new?id=${id}`}>
-                    <button>Plant ruilen</button>
+                <Link className={Styles.swap} href={`/plants/new?id=${id}`}>
+                        <button>Plant ruilen</button>
                 </Link>
             </Suspense>
             <BackButton />
