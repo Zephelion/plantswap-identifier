@@ -40,3 +40,14 @@ footer.nav{
         }
     }
 }
+
+@media (min-width: 730px) {
+    footer.nav{
+        max-width: 40em;
+        border-radius: 10em;
+        max-height: 87px;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

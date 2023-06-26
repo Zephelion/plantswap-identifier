@@ -40,6 +40,10 @@ section.options{
 
                 input {
                     width: 100%;
+
+                    &::placeholder{
+                        opacity: .5;
+                    }
                 }
             }
         }
@@ -58,7 +62,7 @@ div{
     
             span{
                 font-weight: 300;
-                color: var(--mosgroen);
+                color: white;
             }
         }
     

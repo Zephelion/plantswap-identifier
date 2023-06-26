@@ -3,7 +3,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function BaseLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="nl">
             <body className={inter.className}>
                 {children}
             </body>

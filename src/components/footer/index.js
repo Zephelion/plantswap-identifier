@@ -26,7 +26,7 @@ export default function Footer() {
           <li className={route === '/plants/new' ? styles.active : ''}>
             <Link href="/plants/new">
               <Image src="/icons/add.svg" width={30} height={30} alt="Afbeelding voor ruilen en doneren link"/>
-              <p>Doneer/ruil</p>
+              <p>Swap</p>
             </Link>
           </li>
         </ul>

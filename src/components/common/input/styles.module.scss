@@ -1,10 +1,16 @@
+$placeholder-opacity: 0.5;
+
 input.input {
-    background-color: #E6EBDC;
+    background-color: white;
     border-radius: 1000px;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     color: #355841;
+    
+    &::placeholder {
+        opacity: $placeholder-opacity;
+    }
 }
 
 label.label {
@@ -13,11 +19,15 @@ label.label {
 }
 
 textarea.textarea {
-    background-color: #E6EBDC;
+    background-color: white;
     border: none;
     color: #355841;
     border-radius: 20px;
-    min-height: 150px;
+    min-height: 100px;
     padding: 10px 20px;
     font-size: 16px;
+
+    &::placeholder {
+        opacity: $placeholder-opacity;
+    }
 }
