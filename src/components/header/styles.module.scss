@@ -1,18 +1,6 @@
 header.container{
     background-color: transparent;
-
-    div{
-        display: flex;
-        gap: 10px;
-
-        h1{
-            font-size: 1.3em;
-            display: flex;
-            align-items: center;
-            color: var(--primary-bg-color);
-        }
-    }
-
+    
     p{
         margin-block: 20px;
         font-size: 1.8em;
