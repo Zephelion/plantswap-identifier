@@ -16,13 +16,13 @@ nav.progress {
                 place-content: center;
                 width: $size;
                 height: $size;
-                background-color: #c8cfba;
+                background-color: white;
                 border-radius: 50%;
                 font-weight: 700;
-                color: #355841;
-                font-size: 25px;
+                color: #1D1B27;
+                font-size: 20px;
 
-                $position-top: 6rem;
+                $position-top: 9.8rem;
                 $position-left: 1.5rem;
                 $bar-height: 15px;
 
@@ -34,7 +34,7 @@ nav.progress {
                     width: 88%;
                     height: $bar-height;
                     border-radius: 15px;
-                    background-color: #c8cfba;
+                    background-color: white;
                     z-index: -10;
                 }
 
@@ -46,23 +46,23 @@ nav.progress {
                     width: 15%;
                     height: $bar-height;
                     border-radius: 15px;
-                    background-color: #355841;
+                    background-color: #00CD8E;
                     z-index: -1;
                 }
 
                 &.active {
-                    background-color: #355841;
-                    color: #c8cfba;
+                    background-color: #00CD8E;
+                    color: white;
                 }
 
-                &.current {
-                    border: 2px solid black;
-                }
+                // &.current {
+                //     border: .5px solid black;
+                // }
 
                 span {
                     position: absolute;
                     bottom: $size * -0.75;
-                    color: #355841;
+                    color: #00CD8E;
                     font-size: 1rem;
                 }
             }
