@@ -5,3 +5,13 @@ section.about{
         color: var(--primary-bg-color);
     }
 }
+
+@media (min-width: 730px){
+    section.about{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2em;
+        max-width: 36em;
+    }
+}

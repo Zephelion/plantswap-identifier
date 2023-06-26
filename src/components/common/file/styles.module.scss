@@ -40,3 +40,11 @@ section.file {
         }
     }
 }
+
+@media (min-width:730px){
+    section.file{
+        max-width: 30em;
+        display: flex;
+        align-self: center;
+    }
+}

@@ -34,4 +34,21 @@
     ul::-webkit-scrollbar {
         display: none;
     }
+
+    section.flex{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 730px){
+    .intro{
+        gap: 4rem;
+        section.flex{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
 }

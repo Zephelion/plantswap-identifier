@@ -31,11 +31,12 @@ nav.progress {
                     position: absolute;
                     top: $position-top;
                     left: $position-left;
-                    width: 88%;
+                    // width: 88%;
                     height: $bar-height;
                     border-radius: 15px;
                     background-color: white;
                     z-index: -10;
+                    right: 2rem;
                 }
 
                 &::after {
@@ -110,6 +111,45 @@ nav.progress {
                             width: 88%;
                             z-index: -3;
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width:730px){
+    nav.progress {
+        ul {
+            li {
+                .step {
+                    $position-top: 16.8rem;
+                    $position-left: 8.5rem;
+                    $bar-height: 15px;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: $position-top;
+                        left: $position-left;
+                        // width: 88%;
+                        height: $bar-height;
+                        border-radius: 15px;
+                        background-color: white;
+                        z-index: -10;
+                        right: 10rem;
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: $position-left;
+                        top: $position-top;
+                        width: 10%;
+                        height: $bar-height;
+                        border-radius: 15px;
+                        background-color: #00CD8E;
+                        z-index: -1;
                     }
                 }
             }
