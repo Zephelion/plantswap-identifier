@@ -19,7 +19,7 @@ export default async function Home() {
                     <Image src="/icons/plantswap.svg" alt="logo" width={36} height={36} />
                     <h1>PlantSwap</h1>
                 </div>
-                <p>Verbind, ruil en laat je tuin groeien met PlantSwap!</p>
+                <p className={styles.landing}>Verbind, ruil en laat je tuin groeien met PlantSwap!</p>
                 <LandingLink />
             </Header>
 
@@ -36,8 +36,10 @@ export default async function Home() {
                     <ListItem>Identificeer uw eigen plant en vul de desbetreffende informatie in.</ListItem>
                     <ListItem>(Optioneel) U kunt ook gewoon een plant doneren. Vul wel de gegevens in.</ListItem>
                 </List>
-                <About />
-                <Map />
+                <section className={styles.flex}>
+                    <About />
+                    <Map />
+                </section>
             </section>
         </MainLayout>
     )

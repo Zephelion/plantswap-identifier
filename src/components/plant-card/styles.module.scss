@@ -11,12 +11,18 @@ li.card{
 
     a{
         display: inline-block;
+        width: 100%;
         color: #355841;
 
-        img{
-            height: auto;
-            width: 100%;
-            border-radius: 0.5rem;
+        section{
+            height: 200px;
+
+            img{
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+                border-radius: 0.5rem;
+            }
         }
 
         div{
@@ -33,5 +39,21 @@ li.card{
 
         }
     
+    }
+}
+
+@media (min-width: 730px){
+    li.card{
+        width: calc(100% / 17 * 4 );
+
+        a{
+            section{
+                height: 25em;
+
+                img{
+                    border-radius: 1.3em;
+                }
+            }
+        }
     }
 }

@@ -63,3 +63,10 @@ ol {
     color-scheme: dark;
   }
 }
+
+@media (min-width: 730px) {
+  main {
+    padding: 8rem;
+    padding-bottom: 10rem;
+  }
+}
