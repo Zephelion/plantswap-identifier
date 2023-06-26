@@ -41,3 +41,19 @@ li.card{
     
     }
 }
+
+@media (min-width: 730px){
+    li.card{
+        width: calc(100% / 17 * 4 );
+
+        a{
+            section{
+                height: 25em;
+
+                img{
+                    border-radius: 1.3em;
+                }
+            }
+        }
+    }
+}

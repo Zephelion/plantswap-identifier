@@ -16,5 +16,24 @@ header.container{
     p{
         margin-block: 20px;
         font-size: 1.8em;
+        max-width: 20em;
+    }
+}
+
+@media (min-width: 730px){
+    header.container{
+
+
+        div{
+
+
+            h1{
+
+            }
+        }
+
+        p{
+            font-size: 2.5em;
+        }
     }
 }

@@ -25,3 +25,10 @@ ol.container {
     }
   }
 }
+
+@media (min-width: 990px) {
+  ol.container{
+    flex-direction: row;
+  }
+} 
+

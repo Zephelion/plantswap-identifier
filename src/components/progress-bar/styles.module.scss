@@ -31,11 +31,12 @@ nav.progress {
                     position: absolute;
                     top: $position-top;
                     left: $position-left;
-                    width: 88%;
+                    // width: 88%;
                     height: $bar-height;
                     border-radius: 15px;
                     background-color: white;
                     z-index: -10;
+                    right: 2rem;
                 }
 
                 &::after {
