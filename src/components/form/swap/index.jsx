@@ -11,15 +11,27 @@ import { LoadingSpinner } from "@/components/loading/spinner";
 import Button from "@/components/common/button";
 import Input from "@/components/common/input/input";
 import LabelInput from "@/components/common/input/labelInput";
+import { useSearchParams } from 'next/navigation';
 
+const fetchChosenPlant = async (id) => {
+
+    const data = await axios.get(`/api/plants/plant`, {
+        params: {
+            id
+        }
+    })
+    return data.data
+}
 export const Swap = ({
     formDetails,
     formTips,
     image,
 }) => {
 
-    const { push: redirect } = useRouter();
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
 
+    const { push: redirect } = useRouter();
     const [plants, setPlants] = useState([]);
     const [chosenPlant, setChosenPlant] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +42,7 @@ export const Swap = ({
         stekje_in: '',
         stekje_out: '',
     });
-
+    
     const fetchPlants = async (search = '', isTaken = 'false') => {
         const data = await axios.get('/api/plants', {
             params: {
@@ -40,15 +52,25 @@ export const Swap = ({
         })
         return data.data
     }
-
+    
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const { data } = await fetchPlants()
-            setPlants(data)
+            const { data: plants } = await fetchPlants()
+            setPlants(plants)
+            
+            if(id){
+                const { data: fetchedChosenPlant } = await fetchChosenPlant(id)
+                setChosenPlant(fetchedChosenPlant)
+                setSwapItems({
+                    ...swapItems,
+                    stekje_out: fetchedChosenPlant.id,
+                })
+            }
+
             setIsLoading(false)
         })()
-    }, []);
+    }, [id]);
 
     const submitForm = async ({ e, onlyDonate }) => {
 
@@ -72,6 +94,7 @@ export const Swap = ({
             setOnlyDonate(false)
             setIsLoading(false)
             setSwapItems({
+                ...swapItems,
                 stekje_in: data.id,
             })
         }
@@ -82,7 +105,8 @@ export const Swap = ({
             ...swapItems,
             stekje_out: chosenPlant.id,
         })
-    }, [chosenPlant])
+        console.log(swapItems)
+    }, [chosenPlant, setSwapItems])
 
     return (
         onlyDonate
@@ -96,7 +120,7 @@ export const Swap = ({
                         </Button>
 
                         <div>
-                            <LabelInput updateValue={setCollector} label="Wie komt deze plant ophalen" id="collector" />
+                            <LabelInput updateValue={setCollector} label="Wie komt een plant ruilen" id="collector" placeholder="Vul een naam in" />
                             <Button clickAction={(e) => submitForm({ e, onlyDonate: false })}
                                 label="Doneren en ruilen"
                             >

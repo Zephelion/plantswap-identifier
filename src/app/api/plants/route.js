@@ -7,7 +7,7 @@ import { hygraph } from '@/../lib/GrapQLClient';
 export const runtime = "nodejs";
 
 const PLANTNET_API_KEY = process.env.NEXT_PUBLIC_PLANTNET_KEY;
-const PLANTNET_API_URL = `https://my-api.plantnet.org/v2/identify/all?include-related-images=true&no-reject=false&lang=en&api-key=${PLANTNET_API_KEY}`;
+const PLANTNET_API_URL = `https://my-api.plantnet.org/v2/identify/all?include-related-images=true&no-reject=false&lang=nl&api-key=${PLANTNET_API_KEY}`;
 
 export async function POST(req, res) {
     const reqFormData = await req.formData();
