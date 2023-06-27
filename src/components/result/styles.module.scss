@@ -33,4 +33,10 @@ li.result{
             }
         }
     }
+
+    &:focus{
+        border-radius: 0.5rem;
+        outline: 2px solid var(--tertiary-bg-color);
+        outline-offset: .25rem;
+    }
 }

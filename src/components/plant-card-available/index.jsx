@@ -16,7 +16,13 @@ const PlantAvailable = ({ plant, setChosenPlant }) => {
     const createdAt = date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })
 
     return (
-        <li className={styles.card} onClick={() => setChosenPlant(plant)}>
+        <li
+            className={styles.card} 
+            onClick={() => setChosenPlant(plant)} 
+            onKeyDown={(e) => e.key === 'Enter' ? setChosenPlant(plant) : null}
+            aria-label={`Selecteer ${plant.naam}`}
+            tabIndex={0}
+        >
             <Image src={image.src} alt={image.alt} width={image.width} height={image.height} priority={true} placeholder={placeholder} />
             <div>
                 <h2>{plant.naam}</h2>
