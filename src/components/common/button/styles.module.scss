@@ -7,4 +7,10 @@ button.button{
     border: none;
     border-radius: 1000px;
     align-self: flex-start;
+
+    &:disabled{
+        background-color: #D3D3D3;
+        color: #A9A9A9;
+        cursor: not-allowed;
+    }
 }

@@ -5,17 +5,16 @@ import { useRouter } from 'next/navigation';
 import styles from "./styles.module.scss";
 import axios from "axios";
 import Plant from "@/components/plant-card-available";
-import {Swap as SwapComponent} from "@/components/swap";
+import { ConfirmSwap } from "@/components/swap";
 import MotionContainer from "@/components/common/motion";
 import { LoadingSpinner } from "@/components/loading/spinner";
 import Button from "@/components/common/button";
-import Input from "@/components/common/input/input";
 import LabelInput from "@/components/common/input/labelInput";
 import { useSearchParams } from 'next/navigation';
+import { ErrorMessage } from "../error-message";
 
 const API_URL = "/api/plants/plant";
 const fetchChosenPlant = async (id) => {
-
     const data = await axios.get(`/api/plants/plant`, {
         params: {
             id
@@ -29,23 +28,25 @@ export const Swap = ({
     formTips,
     image,
     uploadImg,
+    updateStep
 }) => {
 
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
-
     const { push: redirect } = useRouter();
+
     const [plants, setPlants] = useState([]);
     const [chosenPlant, setChosenPlant] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [onlyDonate, setOnlyDonate] = useState(true);
+    const [showConfirmSwap, setShowConfirmSwap] = useState(false);
 
     const [collector, setCollector] = useState('');
     const [swapItems, setSwapItems] = useState({
         stekje_in: '',
         stekje_out: '',
     });
-    
+
     const fetchPlants = async (search = '', isTaken = 'false') => {
         const data = await axios.get('/api/plants', {
             params: {
@@ -55,14 +56,14 @@ export const Swap = ({
         })
         return data.data
     }
-    
+
     useEffect(() => {
         (async () => {
             setIsLoading(true)
             const { data: plants } = await fetchPlants()
             setPlants(plants)
-            
-            if(id){
+
+            if (id) {
                 const { data: fetchedChosenPlant } = await fetchChosenPlant(id)
                 setChosenPlant(fetchedChosenPlant)
                 setSwapItems({
@@ -79,7 +80,7 @@ export const Swap = ({
 
         e.preventDefault();
         setIsLoading(true)
-        
+
         const formData = new FormData();
         formData.append("plant_id", chosenPlant.id);
         formData.append("only_donate", onlyDonate);
@@ -110,30 +111,44 @@ export const Swap = ({
             ...swapItems,
             stekje_out: chosenPlant.id,
         })
-    }, [chosenPlant, setSwapItems])
+
+        if (formDetails.naam && formDetails.latijnsenaam) {
+            setShowConfirmSwap(true)
+        }
+    }, [chosenPlant, setSwapItems, formDetails])
 
     return (
         onlyDonate
             ?
-            (
-                <section className={styles.options}>
-                    <div>
-                        <Button clickAction={(e) => submitForm({ e, onlyDonate: true })}
-                            label="Alleen doneren"
-                        >
-                        </Button>
+            (showConfirmSwap
+                ? <section className={styles.options}>
+                    {
+                        isLoading
+                            ? <LoadingSpinner />
+                            : <div>
+                                <Button clickAction={(e) => submitForm({ e, onlyDonate: true })}
+                                    label="Alleen doneren"
+                                >
+                                </Button>
 
-                        <div>
-                            <LabelInput updateValue={setCollector} label="Wie komt een plant ruilen" id="collector" placeholder="Vul een naam in" />
-                            <Button clickAction={(e) => submitForm({ e, onlyDonate: false })}
-                                label="Doneren en ruilen"
-                            >
-                            </Button>
-                        </div>
-                    </div>
-                </section>
+                                <form>
+                                    <LabelInput updateValue={setCollector} label="Wie komt een plant ruilen" id="collector" placeholder="Vul een naam in" />
+                                    <Button clickAction={(e) => submitForm({ e, onlyDonate: false })} disabled={!collector}
+                                        label="Doneren en ruilen"
+                                    >
+                                    </Button>
+                                </form>
+                            </div>
+                    }
+                </section >
+                : <ErrorMessage
+                    message="U heeft geen naam en/of latijnse naam ingevuld"
+                    label="Details invullen"
+                    updateStep={updateStep}
+                    step={3}
+                />
             )
-            
+
             : (
                 <MotionContainer>
                     <div>
@@ -151,7 +166,7 @@ export const Swap = ({
                         }
                     </div>
 
-                    <SwapComponent chosenPlant={chosenPlant} name={formDetails} image={image} swapItems={swapItems} collector={collector}/>
+                    <ConfirmSwap chosenPlant={chosenPlant} name={formDetails} image={image} swapItems={swapItems} collector={collector} />
                 </MotionContainer>
             )
 
