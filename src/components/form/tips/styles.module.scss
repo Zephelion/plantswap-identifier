@@ -17,3 +17,11 @@ form.tips{
         bottom: 5rem;
     }
 }
+
+@media (min-width: 730px){
+    form.tips{
+        button{
+            bottom: 9rem;
+        }
+    }
+}
