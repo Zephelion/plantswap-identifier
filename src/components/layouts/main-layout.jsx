@@ -11,6 +11,9 @@ export default function MainLayout({ children }) {
     return (
         <>
             <MotionContainer tag='main'>
+                <a href="#navigation" id='skip-to-nav'>
+                    go to navigation
+                </a>
                 {children}
             </MotionContainer>
             <Footer />

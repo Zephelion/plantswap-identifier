@@ -8,7 +8,7 @@ import Image from 'next/image';
 export default function Footer() {
   const route = usePathname();
   return (
-    <footer className={styles.nav}>
+    <footer className={styles.nav} id="navigation">
       <nav>
         <ul>
           <li className={route === '/' ? styles.active : ''}>
