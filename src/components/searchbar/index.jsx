@@ -10,7 +10,7 @@ const SearchBar = ({ input = '', setInput, setIsAvailable }) => {
                     type="search"
                     placeholder="Zoek een plant..."
                     value={input}
-                    onChange={e => setInput(e.target.value.trim())}
+                    onChange={e => setInput(e.target.value)}
                 />
                 {
                     input && <button onClick={e => setInput('')}>

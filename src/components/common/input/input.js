@@ -12,7 +12,7 @@ export default function Input({ type, id, placeholder, value, updateForm, requir
             id={id}
             placeholder={placeholder}
             ref={inputRef}
-            onChange={() => updateForm(inputRef.current.value.trim(), id)} 
+            onChange={() => updateForm(inputRef.current.value, id)} 
             value={value} 
             required={required}
         />

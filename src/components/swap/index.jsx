@@ -23,7 +23,7 @@ export const ConfirmSwap = ({ chosenPlant, name, image, swapItems, collector }) 
             }
         })
         setIsLoading(false)
-        redirect('/plants')
+        redirect('/plants/success')
     }
 
     const hasImage = chosenPlant.fotos && chosenPlant.fotos[0];
