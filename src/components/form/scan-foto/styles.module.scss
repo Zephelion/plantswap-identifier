@@ -34,6 +34,12 @@
             }
         }
     }
+    > span{
+        color: var(--tertiary-bg-color);
+        font-size: 1.25rem;
+        font-weight: bold;
+        align-self: center;
+    }
 }
 
 @media (min-width:730px){

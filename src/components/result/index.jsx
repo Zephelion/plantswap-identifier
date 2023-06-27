@@ -1,8 +1,5 @@
 import Image from 'next/image';
 import Styles from './styles.module.scss'
-// import { useState } from 'react'
-
-
 
 const Result = ({ item, active, setActive }) => {
 

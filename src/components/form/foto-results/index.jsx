@@ -20,11 +20,11 @@ export const FotoResults = ({ results, updateStep, setIdentifiedPlant, identifie
         <>
         <section className={Styles.results}>
             <div className={Styles.heading}>
-                <h1>Resultaten</h1>{results.length > 1 ? <span>({results.length} planten gevonden)</span> : <span>({results.length} plant gevonden)</span>}
+                <h1>Resultaten</h1>{results && results.length > 1 ? <span>({results.length} planten gevonden)</span> : <span>({results.length} plant gevonden)</span>}
             </div>
             <p>Hier zijn de resultaten van de planten die het meest overeen komen</p>
             <ul>
-                {results.map(result => {
+                {results && results.map(result => {
                     
                     const isActivePlant = activePlant && activePlant?.gbif?.id === result.gbif.id;
                     return <Result
