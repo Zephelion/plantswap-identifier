@@ -90,6 +90,7 @@ export const Swap = ({
 
         if (onlyDonate) {
             redirect('/plants')
+            console.log("Succesfully donated")
         } else {
             setOnlyDonate(false)
             setIsLoading(false)

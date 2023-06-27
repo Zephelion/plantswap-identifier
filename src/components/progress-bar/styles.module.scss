@@ -222,7 +222,7 @@ nav.progress {
                     .step {
                         &.active {
                             &::after {
-                                width: 72%;
+                                // width: 72%;
                                 z-index: -2;
                             }
                         }
