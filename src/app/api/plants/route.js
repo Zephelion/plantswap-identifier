@@ -90,7 +90,11 @@ export async function GET(req, res) {
                     fileName
                     height
                     width
-                    url
+                    url(transformation: { 
+                        document: { 
+                            output: { format: webp } 
+                        } 
+                    })
                 }
                 beschikbaar
                 createdAt
