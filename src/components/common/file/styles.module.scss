@@ -39,6 +39,12 @@ section.file {
             border-radius: .5rem;
         }
     }
+
+    &:focus-within{
+        border-radius: 0.5rem;
+        outline: 2px solid var(--tertiary-bg-color);
+        outline-offset: 2px;
+    }
 }
 
 @media (min-width:730px){
