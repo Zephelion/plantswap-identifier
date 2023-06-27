@@ -152,6 +152,82 @@ nav.progress {
                         z-index: -1;
                     }
                 }
+
+                &:nth-of-type(2) {
+                    .step {
+                        &.active {
+                            &::after {
+                                width: 35%;
+                                z-index: -2;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-of-type(3) {
+                    .step {
+                        &.active {
+                            &::after {
+                                width: 46%;
+                                z-index: -2;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-of-type(4) {
+                    .step {
+                        &.active {
+                            &::after {
+                                width: 73%;
+                                z-index: -2;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-of-type(5) {
+                    .step {
+                        &.active {
+                            &::after {
+                                width: 85%;
+                                z-index: -2;
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+@media (max-width: 990px){
+    nav.progress{
+        ul{
+            li{
+                &:nth-of-type(4) {
+                    .step {
+                        &.active {
+                            &::after {
+                                width: 62%;
+                                z-index: -2;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-of-type(5) {
+                    .step {
+                        &.active {
+                            &::after {
+                                width: 72%;
+                                z-index: -2;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
