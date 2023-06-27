@@ -7,6 +7,10 @@ form.details{
         display: flex;
         flex-direction: column;
         gap: 5px;
+
+        &:has(input:not(:valid)){
+            color: red;
+        }
     }
 
     button{
