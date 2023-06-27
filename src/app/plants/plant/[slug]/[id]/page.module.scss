@@ -46,11 +46,16 @@ a.swap {
   right: 20px;
 
   button {
-    background-color: #00cd8e;
-    width: 100%;
-    padding: 20px;
-    border-radius: 1000px;
-    font-weight: 700;
-    font-size: 20px;
+    background-color: #00CD8E;
+    color: white;
+    position: fixed;
+    bottom: .5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 2rem;
+    width: 80%;
   }
 }

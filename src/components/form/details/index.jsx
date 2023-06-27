@@ -70,7 +70,7 @@ export const Details = ({
 				<Textearea id="beschrijving" placeholder="Beschrijving" updateForm={updateForm} value={form.beschrijving || ""} />
 			</Label>
 
-			<SubmitButton id="details" label="Volgende"/>
+			<SubmitButton id="details" label="Doorgaan"/>
 		</form>
 	)
 }
