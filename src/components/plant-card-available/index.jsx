@@ -7,7 +7,7 @@ const PlantAvailable = ({ plant, setChosenPlant }) => {
     const placeholder = '/images/placeholder.png';
     const image = {
         src: hasImage ? plant.fotos[0].url : placeholder,
-        alt: hasImage ? `Foto van ${plant.naam}` : `Placeholder voor ${plant.naam}}`,
+        alt: hasImage ? `Foto van ${plant.naam}` : `Placeholder voor ${plant.naam}`,
         width: hasImage ? plant.fotos[0].width : 300,
         height: hasImage ? plant.fotos[0].height : 300,
     }
