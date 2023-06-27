@@ -18,7 +18,7 @@ form.search {
         input {
             width: 100%;
             background-color: white;
-            color: var(--bos);
+            color: var(--tertiary-bg-color);
             border: 1px solid black;
             outline: none;
             padding: 10px;
@@ -74,6 +74,7 @@ form.search {
 
             &:has(input:checked){
                 background-color: var(--primary-bg-color);
+                padding: 0 15px 0 15px;
             }
 
             &:hover{

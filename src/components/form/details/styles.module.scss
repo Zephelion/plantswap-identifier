@@ -7,5 +7,17 @@ form.details{
         display: flex;
         flex-direction: column;
         gap: 5px;
+
+        &:has(input:not(:valid)){
+            color: red;
+        }
+    }
+
+    button{
+        position: fixed;
+        width: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 5rem;
     }
 }

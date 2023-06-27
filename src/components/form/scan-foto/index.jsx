@@ -1,16 +1,18 @@
 "use client"
 import styles from "./styles.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FileInput from "@/components/common/file";
 import ErrorState from "@/components/errorstate";
 import Button from "@/components/common/button";
 import { LoadingSpinner } from "@/components/loading/spinner";
 
-export const ScanFoto = ({ setFotos, updateStep, globalImage, setGlobalImage, }) => {
+export const ScanFoto = ({ setFotos, updateStep, globalImage, setGlobalImage, setUploadImg }) => {
+
     const [image, setImage] = useState(globalImage?.data);
     const [createObjectURL, setCreateObjectURL] = useState(globalImage?.src);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     const API_URL = "/api/plants";
 
@@ -42,6 +44,7 @@ export const ScanFoto = ({ setFotos, updateStep, globalImage, setGlobalImage, })
             src: createObjectURL,
             data: image
         });
+        setUploadImg(image);
         updateStep((prev) => prev + 1);
         setIsLoading(false);
     };
@@ -63,6 +66,17 @@ export const ScanFoto = ({ setFotos, updateStep, globalImage, setGlobalImage, })
         setFotos(null);
     };
 
+    useEffect(() => {
+        (async () => {
+            const navigator = window.navigator;
+            const isMobileCheck = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
+
+            if (isMobileCheck) {
+                setIsMobile(true);
+            }
+        })();
+    }, []);
+
     return (
         <>
             {
@@ -74,17 +88,36 @@ export const ScanFoto = ({ setFotos, updateStep, globalImage, setGlobalImage, })
                         : <section className={styles.identifier}>
                             <h1>Capture plant</h1>
                             <p>
-                                Upload een foto van de plant en kom erachter om welke plant het precies gaat.
+                                Upload een foto van de plant en kom erachter om welke plant het precies gaat. {isMobile ? "Je kunt een foto maken of een foto uploaden vanaf je apparaat" : ""}
                             </p>
+                            {isMobile && !image &&
+                                <>
+                                    <FileInput
+                                        id="photo"
+                                        handleFileChange={handleImageChange}
+                                        clearImage={setImage}
+                                        clearGlobalImage={setGlobalImage}
+                                        imageData={image}
+                                        imageSrc={createObjectURL}
+                                        label="Foto maken"
+                                        capture="user"
+                                    >
+                                        📷
+                                    </FileInput>
+                                    <span>Of</span>
+                                </>
+                            }
                             <FileInput
-                                id="file"
+                                id="upload"
                                 handleFileChange={handleImageChange}
                                 clearImage={setImage}
                                 clearGlobalImage={setGlobalImage}
                                 imageData={image}
                                 imageSrc={createObjectURL}
-                                label={image ? "nieuwe foto selecteren" : "Foto maken"}
-                            />
+                                label="Foto uploaden"
+                            >
+                                📁
+                            </FileInput>
 
                             {
                                 image &&

@@ -7,7 +7,6 @@
         padding: 1rem 2rem;
         background-color: var(--bos);
         border-radius: 2rem;
-        font-size: 1.25rem;
         font-weight: bold;
     }
     
@@ -33,6 +32,12 @@
                 background-color: var(--primary-bg-color);
             }
         }
+    }
+    > span{
+        color: var(--tertiary-bg-color);
+        font-size: 1.25rem;
+        font-weight: bold;
+        align-self: center;
     }
 }
 
