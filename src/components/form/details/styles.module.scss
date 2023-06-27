@@ -21,3 +21,11 @@ form.details{
         bottom: 5rem;
     }
 }
+
+@media (min-width: 730px){
+    form.details{
+        button{
+            bottom: 9rem;
+        }
+    }
+}
