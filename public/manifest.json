@@ -4,9 +4,9 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Plantswap",
-    "description": "Doneer en ruil planten verschillende mensen uit de buurt!",
-    "short_name": "plant_swap",
+    "name": "Plant Swap",
+    "description": "Verbind, ruil en laat je tuin groeien met Plant Swap!",
+    "short_name": "Plant Swap",
     "icons": [
         {
             "src": "/icons/icon-192x192.png",
