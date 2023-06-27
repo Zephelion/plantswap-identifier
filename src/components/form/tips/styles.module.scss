@@ -8,4 +8,12 @@ form.tips{
         flex-direction: column;
         gap: 5px;
     }
+
+    button{
+        position: fixed;
+        width: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 5rem;
+    }
 }
