@@ -27,7 +27,7 @@ export const Swap = ({ chosenPlant, name, image, swapItems, collector }) => {
     const placeholder = '/images/placeholder.png';
     const chosenImage = {
         src: hasImage ? chosenPlant.fotos[0].url : placeholder,
-        alt: hasImage ? `Foto van ${chosenPlant.naam}` : `Placeholder voor ${chosenPlant.naam}}`,
+        alt: hasImage ? `Foto van ${chosenPlant.naam}` : `Placeholder voor ${chosenPlant.naam}`,
         width: hasImage ? chosenPlant.fotos[0].width : 300,
         height: hasImage ? chosenPlant.fotos[0].height : 300,
     }

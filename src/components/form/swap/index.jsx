@@ -13,6 +13,7 @@ import Input from "@/components/common/input/input";
 import LabelInput from "@/components/common/input/labelInput";
 import { useSearchParams } from 'next/navigation';
 
+const API_URL = "/api/plants/plant";
 const fetchChosenPlant = async (id) => {
 
     const data = await axios.get(`/api/plants/plant`, {
@@ -22,10 +23,12 @@ const fetchChosenPlant = async (id) => {
     })
     return data.data
 }
+
 export const Swap = ({
     formDetails,
     formTips,
     image,
+    uploadImg,
 }) => {
 
     const searchParams = useSearchParams();
@@ -76,15 +79,17 @@ export const Swap = ({
 
         e.preventDefault();
         setIsLoading(true)
-        const { data: { data } } = await axios.post('/api/plants/plant', {
-            plant_id: chosenPlant.id,
-            only_donate: onlyDonate,
-            form_details: formDetails,
-            form_tips: formTips,
-            image,
-        }, {
+        
+        const formData = new FormData();
+        formData.append("plant_id", chosenPlant.id);
+        formData.append("only_donate", onlyDonate);
+        formData.append("form_details", JSON.stringify(formDetails));
+        formData.append("form_tips", JSON.stringify(formTips));
+        formData.append("upload_img", uploadImg);
+
+        const { data: { data } } = await axios.post(API_URL, formData, {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
             }
         })
 
@@ -105,7 +110,6 @@ export const Swap = ({
             ...swapItems,
             stekje_out: chosenPlant.id,
         })
-        console.log(swapItems)
     }, [chosenPlant, setSwapItems])
 
     return (

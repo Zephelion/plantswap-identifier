@@ -16,6 +16,8 @@ export default function NewPlant() {
         src: "",
         data: null
     });
+    const [uploadImg, setUploadImg] = useState(null);
+
     const [fotoResults, setFotoResults] = useState([]);
     const [identifiedPlant, setIdentifiedPlant] = useState({});
     const [formDetails, setFormDetails] = useState({});
@@ -27,7 +29,7 @@ export default function NewPlant() {
                 title: "Foto",
                 description: "Scan de foto van de plant",
                 activeStep: 1,
-                component: <ScanFoto setFotos={setFotoResults} updateStep={setActiveStep} setGlobalImage={setImage} globalImage={image}/>
+                component: <ScanFoto setFotos={setFotoResults} updateStep={setActiveStep} setGlobalImage={setImage} globalImage={image} setUploadImg={setUploadImg}/>
             },
             {
                 title: "Resultaten",
@@ -52,12 +54,10 @@ export default function NewPlant() {
                 description: "Swap view",
                 activeStep: 5,
                 component: 
-                <Swap formDetails={formDetails} formTips={formTips} image={image}>
-                    Test
-                </Swap>
+                <Swap formDetails={formDetails} formTips={formTips} image={image} uploadImg={uploadImg} />
             }
         ])
-    }, [fotoResults, formDetails, formTips, image, identifiedPlant])
+    }, [fotoResults, formDetails, formTips, image, identifiedPlant, uploadImg])
 
     return (
         <MainLayout>
