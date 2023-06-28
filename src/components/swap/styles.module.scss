@@ -78,3 +78,9 @@ section.container{
         background-color: var(--tertiary-bg-color);
     }
 }
+
+@media (min-width:730px){
+    section.container{
+        bottom: -4.5rem;
+    }
+}

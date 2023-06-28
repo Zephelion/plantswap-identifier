@@ -11,3 +11,9 @@ button.next{
     border-radius: 2rem;
     width: 80%;
 }
+
+@media (min-width: 730px) {
+    button.next{
+        bottom: 9rem;
+    }
+}
