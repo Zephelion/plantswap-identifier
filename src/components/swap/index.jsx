@@ -43,9 +43,9 @@ export const ConfirmSwap = ({ chosenPlant, name, image, swapItems, collector }) 
                 : <div className={Styles.inner}>
                     <div className={Styles.plant}>
                         <div className={Styles.image}>
-                            <Image src={image.src} alt={name} width={200} height={200} />
+                            <Image src={image.src} alt={name.naam} width={200} height={200} />
                         </div>
-                        <span>{name.latin_name}</span>
+                        <span>{name.latijnsenaam}</span>
                     </div>
 
                     <div className={Styles.icon}>
@@ -59,7 +59,7 @@ export const ConfirmSwap = ({ chosenPlant, name, image, swapItems, collector }) 
                                 chosenPlant.fotos && <Image src={chosenImage.src} alt={chosenImage.alt} width={200} height={200} />
                             }
                         </div>
-                        <span>{chosenPlant.name}</span>
+                        <span>{chosenPlant.naam}</span>
                     </div>
                 </div>
             }
