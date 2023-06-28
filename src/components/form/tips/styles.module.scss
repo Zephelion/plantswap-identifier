@@ -7,6 +7,10 @@ form.tips{
         display: flex;
         flex-direction: column;
         gap: 5px;
+
+        span{
+            margin-left: 1rem;
+        }
     }
 
     button{
