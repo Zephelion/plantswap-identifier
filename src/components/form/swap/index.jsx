@@ -47,7 +47,7 @@ export const Swap = ({
         stekje_out: '',
     });
 
-    const fetchPlants = async (search = '', available = 'true') => {
+    const fetchPlants = async (search = '', available = true) => {
         const data = await axios.get('/api/plants', {
             params: {
                 search,
