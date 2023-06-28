@@ -11,13 +11,14 @@ export default function MotionContainer({
 }) {
 
     const MotionTag = motion(tag);
-
+    
     return (
         <MotionTag
             initial={initial}
             animate={animate}
             exit={exit}
             transition={transition}
+            id={tag === "main" ? "main-content" : "motion-container"}
         >
             {children}
         </MotionTag>

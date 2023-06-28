@@ -39,12 +39,28 @@ a {
     &#skip-to-nav {
         position: absolute;
         top: 1rem;
-        left: 1rem;
-        opacity: 0.1;
+        right: 1rem;
+        opacity: 0.01;
 
         &:focus {
             opacity: 1;
         }
+        pointer-events: none;
+    }
+    
+    &#skip-to-main {
+        position: absolute;
+        left: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+        opacity: 0.01;
+        text-align: center;
+        
+        &:focus {
+            opacity: 1;
+            background-color: #f2f5ff;
+        }
+        pointer-events: none;
     }
 }
 
