@@ -5,6 +5,10 @@ const PlantInfo = ({ info }) => {
     const date = new Date(info.createdAt)
     const createdAt = date.toLocaleDateString('nl-NL', {day: 'numeric', month: 'long', year: 'numeric'})
 
+    const randomInt = Math.floor(Math.random() * 2)
+    const moeilijkheidsgraad = ['Makkelijk', 'Uitdagend']
+    const moeilijkheidsgraadText = moeilijkheidsgraad[randomInt];
+    
     return (
         <>
             <section className={Styles.heading}>
@@ -18,7 +22,7 @@ const PlantInfo = ({ info }) => {
 
             <section className={Styles.information}>
                 <h3>Moeilijkheid</h3>
-                <p>Uitdagend</p>
+                <p>{moeilijkheidsgraadText}</p>
                 {/* <p>{info.categories[0].naam}</p> */}
             </section>
 
