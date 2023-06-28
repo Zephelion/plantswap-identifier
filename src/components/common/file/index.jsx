@@ -21,6 +21,7 @@ export default function FileInput({ id, handleFileChange, imageSrc, imageData, l
                         accept="image/*"
                         capture={capture}
                         onChange={(e) => handleFileChange(e)}
+                        aria-label={label}
                     />
                 </Label>
 

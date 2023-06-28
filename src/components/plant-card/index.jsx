@@ -18,7 +18,7 @@ const Plant = ({ plant }) => {
 
     return (
         <li className={Styles.card}>
-            <Link href={`/plants/plant/${plant.slug}/${plant.id}`}>
+            <Link href={`/plants/plant/${plant.slug}/${plant.id}`} aria-label={`Detailpagina voor${plant.naam}`}>
                 <section>
                     <Image
                         src={image.src}
