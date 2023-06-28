@@ -11,7 +11,7 @@ section.options{
         width: 100%;
     }
     
-    >div{
+    > div{
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -58,11 +58,12 @@ div{
 
         div.title{
             display: flex;
+            align-items: center;
             gap: 10px;
     
             span{
                 font-weight: 300;
-                color: white;
+                color: var(--tertiary-bg-color);
             }
         }
     

@@ -45,17 +45,17 @@ export const Tips = ({
 	return (
 		<form className={styles.tips} onSubmit={submitForm}>
 			<Label labelFor="watergeven">
-                Water geven
+                <span>Water geven</span>
 				<Textearea id="watergeven" placeholder="Water geven" updateForm={updateForm} />
 			</Label>
 
 			<Label labelFor="zonlicht">
-                Zonlicht
+                <span>Zonlicht</span>
 				<Textearea id="zonlicht" placeholder="Zonlicht" updateForm={updateForm} />
 			</Label>
 
 			<Label labelFor="temperatuur">
-                Temperatuur
+                <span>Temperatuur</span>
 				<Textearea id="temperatuur" placeholder="Temperatuur" updateForm={updateForm} />
 			</Label>
 

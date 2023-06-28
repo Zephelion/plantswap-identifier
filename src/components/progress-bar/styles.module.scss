@@ -31,7 +31,6 @@ nav.progress {
                     position: absolute;
                     top: $position-top;
                     left: $position-left;
-                    // width: 88%;
                     height: $bar-height;
                     border-radius: 15px;
                     background-color: white;
@@ -55,10 +54,6 @@ nav.progress {
                     background-color: #00CD8E;
                     color: white;
                 }
-
-                // &.current {
-                //     border: .5px solid black;
-                // }
 
                 span {
                     position: absolute;
@@ -132,7 +127,6 @@ nav.progress {
                         position: absolute;
                         top: $position-top;
                         left: $position-left;
-                        // width: 88%;
                         height: $bar-height;
                         border-radius: 15px;
                         background-color: white;

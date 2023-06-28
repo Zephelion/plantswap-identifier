@@ -12,8 +12,8 @@ button.next{
     width: 80%;
 }
 
-// @media (min-width: 730px){
-//     button.next{
-//         bottom: 9rem;
-//     }
-// }
+@media (min-width: 730px) {
+    button.next{
+        bottom: 9rem;
+    }
+}

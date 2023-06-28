@@ -1,13 +1,20 @@
 li.card{
     scroll-snap-align: start;
-    flex: 0 0 auto;
+    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    flex-grow: 1;
     width: 160px;
-    // height: 180px;
+    transition: padding 0.2s ease-in-out, flex-grow 0.2s ease-in-out;
+    scroll-padding-bottom: 8rem;
+
+    &:focus-within{
+        flex-grow: 100;
+        outline: 2px solid var(--tertiary-bg-color);
+        outline-offset: 0.5rem;
+        border-radius: 0.5rem;
+    }
 
     a{
         display: inline-block;
@@ -38,7 +45,10 @@ li.card{
             }
 
         }
-    
+
+        &:focus{
+            outline: none;
+        }
     }
 }
 

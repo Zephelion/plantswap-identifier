@@ -47,11 +47,11 @@ export const Swap = ({
         stekje_out: '',
     });
 
-    const fetchPlants = async (search = '', isTaken = 'false') => {
+    const fetchPlants = async (search = '', available = true) => {
         const data = await axios.get('/api/plants', {
             params: {
                 search,
-                is_taken: isTaken,
+                available,
             }
         })
         return data.data

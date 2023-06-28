@@ -11,7 +11,13 @@ const Result = ({ item, active, setActive }) => {
 
     const styles = `${Styles.result} ${active ? Styles.active : ""}`;
     return (
-        <li className={styles} onClick={() => handleActive()}>
+        <li
+            className={styles} 
+            onClick={() => handleActive()} 
+            onKeyDown={(e) => e.key === 'Enter' ? handleActive() : null}
+            tabIndex={0} 
+            aria-label={`Selecteer ${item.species.scientificName}`}
+        >
             <div className={Styles.information} >
                 {item.images[0]
                     ? <Image src={item.images[0].url.m} alt="placeholder image" width={140} height={100} />

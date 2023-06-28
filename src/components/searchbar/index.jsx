@@ -7,10 +7,11 @@ const SearchBar = ({ input = '', setInput, setIsAvailable }) => {
             <section >
                 <span>🔍</span>
                 <input
+                    aria-label="Zoek een plant"
                     type="search"
                     placeholder="Zoek een plant..."
                     value={input}
-                    onChange={e => setInput(e.target.value)}
+                    onChange={e => setInput(e.target.value.trimStart())}
                 />
                 {
                     input && <button onClick={e => setInput('')}>
