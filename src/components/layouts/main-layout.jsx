@@ -1,6 +1,7 @@
 'use client';
 import Footer from '@/components/footer';
 import MotionContainer from '@/components/common/motion';
+import { SkipToNav } from '../skip-to-nav';
 
 export const metadata = {
     title: 'Plantswap',
@@ -11,6 +12,7 @@ export default function MainLayout({ children }) {
     return (
         <>
             <MotionContainer tag='main'>
+                <SkipToNav />
                 {children}
             </MotionContainer>
             <Footer />

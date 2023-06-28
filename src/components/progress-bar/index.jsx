@@ -15,7 +15,8 @@ export const ProgressBar = ({ activeStep, setActiveStep, count, steps }) => {
                         >
                             <button
                                 className={`${Styles.step} ${active ? Styles.active : ''} ${current ? Styles.current : ''}`}
-                                onClick={() => setActiveStep(number)}
+                                onClick={() => setActiveStep(number)}   
+                                aria-label={`${step.title}, stap ${number} van de ${count}`}
                             >
                                 {number}
                             </button>

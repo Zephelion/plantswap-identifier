@@ -58,11 +58,12 @@ div{
 
         div.title{
             display: flex;
+            align-items: center;
             gap: 10px;
     
             span{
                 font-weight: 300;
-                color: white;
+                color: var(--tertiary-bg-color);
             }
         }
     

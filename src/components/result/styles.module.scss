@@ -24,8 +24,9 @@ li.result{
         display: flex;
         gap: 1rem;
         img{
+            width: 140px;
+            height: 100px;
             object-fit: cover;
-            // height: 100%;
         }
 
         div{
@@ -33,5 +34,11 @@ li.result{
                 font-weight: 200;
             }
         }
+    }
+
+    &:focus{
+        border-radius: 0.5rem;
+        outline: 2px solid var(--tertiary-bg-color);
+        outline-offset: .25rem;
     }
 }

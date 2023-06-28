@@ -46,13 +46,13 @@ export const Details = ({
 	return (
 		<form className={styles.details} onSubmit={submitForm}>
 			<Label labelFor="naam">
-				Naam{form.naam ==="" && ": Invullen is verplicht!" }
-				<Input type="name" id="naam" placeholder="Naam" updateForm={updateForm} value={form.naam || ""} required={true}/>
+				Naam{!form.naam.trimStart() && ": Invullen is verplicht!" }
+				<Input type="name" id="naam" placeholder="Naam" updateForm={updateForm} value={form.naam.trimStart() || ""} required={true}/>
 			</Label>
 
 			<Label labelFor="latijnsenaam">
-				Latijnse Naam{form.latijnsenaam ==="" && ": Invullen is verplicht!" }
-				<Input type="name" id="latijnsenaam" placeholder="Latijnse naam" updateForm={updateForm} value={form.latijnsenaam || ""} required={true}/>
+				Latijnse Naam{!form.latijnsenaam.trimStart() && ": Invullen is verplicht!" }
+				<Input type="name" id="latijnsenaam" placeholder="Latijnse naam" updateForm={updateForm} value={form.latijnsenaam.trimStart() || ""} required={true}/>
 			</Label>
 
 			<Label labelFor="landvanherkomst">
@@ -70,7 +70,7 @@ export const Details = ({
 				<Textearea id="beschrijving" placeholder="Beschrijving" updateForm={updateForm} value={form.beschrijving || ""} />
 			</Label>
 
-			<SubmitButton id="details" label="Doorgaan" disabled={form.naam === "" || form.latijnsenaam === ""} />
+			<SubmitButton id="details" label="Doorgaan" disabled={!form.naam.trimStart() || !form.latijnsenaam.trimStart()} />
 		</form>
 	)
 }
