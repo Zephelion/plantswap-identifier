@@ -18,7 +18,7 @@ export default function MotionContainer({
             animate={animate}
             exit={exit}
             transition={transition}
-            id={tag === "main" && "main-content"}
+            id={tag === "main" ? "main-content" : null}
         >
             {children}
         </MotionTag>
