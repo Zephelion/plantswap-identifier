@@ -7,6 +7,7 @@ const SearchBar = ({ input = '', setInput, setIsAvailable }) => {
             <section >
                 <span>🔍</span>
                 <input
+                    aria-label="Zoek een plant"
                     type="search"
                     placeholder="Zoek een plant..."
                     value={input}
