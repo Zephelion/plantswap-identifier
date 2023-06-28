@@ -53,7 +53,7 @@ const Page = ({ params }) => {
                     }
                 </article>
                 <Link className={Styles.swap} href={`/plants/new?id=${id}`}>
-                        <button>Plant ruilen</button>
+                    <button>Plant ruilen</button>
                 </Link>
             </Suspense>
             <BackButton />
